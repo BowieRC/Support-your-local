@@ -1,0 +1,8 @@
+
+/*Customize nav bar for additional pages where only brand logo and back button are needed */
+.navbar-fixed-full-width {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content:space-between;
+}
