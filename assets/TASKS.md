@@ -102,6 +102,24 @@ THEN I see the page refresh (awaiting future backend functionality)
 
 ### Site navigation
 
+GIVEN I want to to use this app efficiently to guide me using mobile devices
+WHEN I land on the homepage 
+THEN screen space is maximised for the main functionality of the website
+WHEN I want to see further detail
+THEN I use the dropdown hamburger to navigate to other pages and back
+
+GIVEN I want to use this app on a desktop when planning my shopping trip
+WHEN I land on the homepage
+THEN I see sidebars with ideas and inspiration
+WHEN I want to see further detail on large screens
+THEN I use the navbar menu to navigate to other pages and back
+
+**Tasks**
+- Add navbar from Bulma
+- Activate links to other pages (About, contact)
+- Begin other .html files for additional pages
+- Activate hamburger dropdown menu
+- Future direction - use event listeners on navigation buttons to monitor how users interact with the webpage
 <br>
 <br>
 
