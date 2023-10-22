@@ -5,11 +5,11 @@ var contactNavEl = $('#contact-nav');
 
 //Event listener on nav items changes url to other page
 aboutNavEl.on('click', function () {
-    document.location.replace('./about.html');
+    document.location.assign('./about.html');
   });
 
 contactNavEl.on('click', function () {
-    document.location.replace('./contact.html');
+    document.location.assign('./contact.html');
 });
 
 //Click event causes reload
@@ -22,7 +22,7 @@ homeNavEl.on('click', function() {
 var backNavEl = $('#back-nav');
 
 backNavEl.on('click', function () {
-    document.location.replace('./index.html');
+    document.location.assign('./index.html');
 })
 
 //code for nav hamburger to toggle 
