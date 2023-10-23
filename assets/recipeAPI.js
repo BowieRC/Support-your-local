@@ -22,7 +22,6 @@ var currentSearchMeals = [];
 sortOptionsEl.on("change", () => { 
   
   var fOptions = document.getElementById("fOptionsList"); 
-  console.log("fOptions children: " + fOptions.children[0])
 
   while (fOptions.children[0]){
       fOptions.remove(fOptions.children[0]);
@@ -69,7 +68,6 @@ function getCats() {
     })
     .then(function (data) {
       currentSearchType = data;
-      console.log(currentSearchType);
         for(i=0; i<currentSearchType.meals.length; i++){
           var catChoiceEl = $('<option>');
           catChoiceEl.text(currentSearchType.meals[i].strCategory);
@@ -119,7 +117,6 @@ function getIngs(){
 
 function displayResults(){
     var sortCont = document.getElementById("sort-container");
-    console.log("current search meals: "+ currentSearchMeals)
     if(currentSearchMeals.length != 0){
       currentSearchMeals = [];
       while (sortCont.hasChildNodes()){
@@ -128,6 +125,8 @@ function displayResults(){
     }
   
   var searchParameter = filterOptionsEl.val();
+
+  //catagory search
   if(sortOptionsEl.val() == "Categories"){
   fetch (requestURL+searchCats+searchParameter, {})
     .then(function (response) {
@@ -146,7 +145,6 @@ function displayResults(){
   imageWrapper.attr("style", "background-image: url(" + data.meals[i].strMealThumb + ")");
   sortedTitle.attr("class", "sortedTitle");
   
-  console.log(currentSearchMeals.meals[i]);
   sortedTitle.text(currentSearchMeals.meals[i].strMeal);
 
     
@@ -156,13 +154,63 @@ function displayResults(){
   }
         })
   }
-  if(sortOptionsEl === "Area"){
-    //TODO
-    console.log("Area Search");
+
+  //area search
+  if(sortOptionsEl.val() === "Area"){
+    fetch (requestURL+searchArea+searchParameter, {})
+    .then(function (response) {
+        return response.json();
+    })
+.then(function(data) {
+  currentSearchMeals = data;
+  for(i=0; i<currentSearchMeals.meals.length; i++){  
+  var sortWrapper = $("<div>");
+  var imageWrapper = $("<div>");
+  var sortedTitle = $("<h1>");
+  
+  sortContainer.attr("id", "sort-container");
+  sortWrapper.attr("class", "sortWrapper");
+  imageWrapper.attr("class", "imageWrapper");
+  imageWrapper.attr("style", "background-image: url(" + data.meals[i].strMealThumb + ")");
+  sortedTitle.attr("class", "sortedTitle");
+
+  sortedTitle.text(currentSearchMeals.meals[i].strMeal);
+
+    
+  sortContainer.append(sortWrapper);
+  sortWrapper.append(imageWrapper);
+  sortWrapper.append(sortedTitle);
   }
-  if(sortOptionsEl === "Ingredients"){
-    //TODO
-    "Area Search"
+        })
+  }
+
+  //ingredient search
+  if(sortOptionsEl.val() === "Ingredients"){
+    fetch (requestURL+searchIng+searchParameter, {})
+    .then(function (response) {
+        return response.json();
+    })
+.then(function(data) {
+  currentSearchMeals = data;
+  for(i=0; i<currentSearchMeals.meals.length; i++){  
+  var sortWrapper = $("<div>");
+  var imageWrapper = $("<div>");
+  var sortedTitle = $("<h1>");
+  
+  sortContainer.attr("id", "sort-container");
+  sortWrapper.attr("class", "sortWrapper");
+  imageWrapper.attr("class", "imageWrapper");
+  imageWrapper.attr("style", "background-image: url(" + data.meals[i].strMealThumb + ")");
+  sortedTitle.attr("class", "sortedTitle");
+  
+  sortedTitle.text(currentSearchMeals.meals[i].strMeal);
+
+    
+  sortContainer.append(sortWrapper);
+  sortWrapper.append(imageWrapper);
+  sortWrapper.append(sortedTitle);
+  }
+        })
   }
 }
 
