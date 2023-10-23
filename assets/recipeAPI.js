@@ -4,6 +4,8 @@ var catOptionsEl = $("#catOptions");
 var areaOptionsEl = $("#areaOptions");
 var ingsOptionsEl = $("#ingrOptions");
 var filterOptionsEl = $('#fOptionsList');
+var sortContainer = $("#sort-container");
+var vSortContainer = document.getElementById("sort-container");
 
 var requestURL = "HTTPS://www.themealdb.com/api/json/v1/1/";
 var getCat = "list.php?c=list";
@@ -13,41 +15,26 @@ var searchIng = "filter.php?i=";
 var searchCats = "filter.php?c=";
 var searchArea = "filter.php?a=";
 
+var currentSearchType = [];
+var currentSearchMeals = [];
+
 //When changing the Sort By dropdown
 sortOptionsEl.on("change", () => { 
-  if(sortOptionsEl.val() != "null"){
   
-  var fOptions = document.getElementById("fOptionsList");  
+  var fOptions = document.getElementById("fOptionsList"); 
+  console.log("fOptions children: " + fOptions.children[0])
+
   while (fOptions.children[0]){
       fOptions.remove(fOptions.children[0]);
     }
   filterBy();    
-  }
 })
+
 //When changing result of sort by
 filterOptionsEl.on("change", () => {
-  var searchParameter = filterOptionsEl.val();
-  // console.log(requestURL+searchIng+searchParameter.toLowerCase());
-  console.log(sortOptionsEl.val())
-  if(sortOptionsEl.val() == "Categories"){
-  fetch (requestURL+searchCats+searchParameter, {})
-    .then(function (response) {
-        return response.json();
-    })
-.then(function(data) {
-    for(i=0; i<data.meals.length; i++){
-        console.log(data.meals[i].strMeal);      
-    }
-    console.log(data);
-    
-        })
-  }
-  if(sortOptionsEl === "Area"){
-    console.log("Area Search");
-  }
-  if(sortOptionsEl === "Ingredients"){
-    "Area Search"
-  }
+
+
+displayResults();
 });
   
 // chooses which option to filter by
@@ -81,10 +68,12 @@ function getCats() {
         return response.json();
     })
     .then(function (data) {
-        for(i=0; i<data.meals.length; i++){
+      currentSearchType = data;
+      console.log(currentSearchType);
+        for(i=0; i<currentSearchType.meals.length; i++){
           var catChoiceEl = $('<option>');
-          catChoiceEl.text(data.meals[i].strCategory);
-          catChoiceEl.attr("value", data.meals[i].strCategory);
+          catChoiceEl.text(currentSearchType.meals[i].strCategory);
+          catChoiceEl.attr("value", currentSearchType.meals[i].strCategory);
           filterOptionsEl.append(catChoiceEl);
         }
   })
@@ -97,11 +86,12 @@ function getAreas(){
         return response.json();
     })
     .then(function (data) {
+      currentSearchType = data;
     
-        for(i=0; i<data.meals.length; i++){
+        for(i=0; i<currentSearchType.meals.length; i++){
         var areaChoiceEl = $('<option>');
-          areaChoiceEl.text(data.meals[i].strArea);
-          areaChoiceEl.attr("value", data.meals[i].strArea);
+          areaChoiceEl.text(currentSearchType.meals[i].strArea);
+          areaChoiceEl.attr("value", currentSearchType.meals[i].strArea);
           filterOptionsEl.append(areaChoiceEl);
           
         }
@@ -115,38 +105,68 @@ function getIngs(){
         return response.json();
     })
     .then(function (data) {
+      currentSearchType = data;
     
-        for(i=0; i<data.meals.length; i++){
+        for(i=0; i<currentSearchType.meals.length; i++){
         var ingsChoiceEl = $('<option>');
-         ingsChoiceEl.text(data.meals[i].strIngredient);
-          ingsChoiceEl.attr("value", data.meals[i].strIngredient);
+         ingsChoiceEl.text(currentSearchType.meals[i].strIngredient);
+          ingsChoiceEl.attr("value", currentSearchType.meals[i].strIngredient);
           filterOptionsEl.append(ingsChoiceEl);
         }
   })
 }
 
-function displaySearch(data) {
-  var sortContainer = $("<section>");
+
+function displayResults(){
+    var sortCont = document.getElementById("sort-container");
+    console.log("current search meals: "+ currentSearchMeals)
+    if(currentSearchMeals.length != 0){
+      currentSearchMeals = [];
+      while (sortCont.hasChildNodes()){
+        sortCont.removeChild(sortCont.firstChild);
+      }
+    }
   
-  for(i=0; i<data.meals.length; i++){  
+  var searchParameter = filterOptionsEl.val();
+  if(sortOptionsEl.val() == "Categories"){
+  fetch (requestURL+searchCats+searchParameter, {})
+    .then(function (response) {
+        return response.json();
+    })
+.then(function(data) {
+  currentSearchMeals = data;
+  for(i=0; i<currentSearchMeals.meals.length; i++){  
   var sortWrapper = $("<div>");
   var imageWrapper = $("<div>");
   var sortedTitle = $("<h1>");
-  var sortedDescription = $("<p>");
   
   sortContainer.attr("id", "sort-container");
   sortWrapper.attr("class", "sortWrapper");
   imageWrapper.attr("class", "imageWrapper");
+  imageWrapper.attr("style", "background-image: url(" + data.meals[i].strMealThumb + ")");
   sortedTitle.attr("class", "sortedTitle");
-  sortedDescription.attr("class", "sortedDescription");
   
-  sortedTitle.text(data.meals[i].strMeals);
-  sortedDescription.text(data.meals[i].strMeals);
+  console.log(currentSearchMeals.meals[i]);
+  sortedTitle.text(currentSearchMeals.meals[i].strMeal);
+
     
   sortContainer.append(sortWrapper);
-  sortWrapper.append(sortedTitle)
-  imageWrapper
+  sortWrapper.append(imageWrapper);
+  sortWrapper.append(sortedTitle);
   }
-  
+        })
+  }
+  if(sortOptionsEl === "Area"){
+    //TODO
+    console.log("Area Search");
+  }
+  if(sortOptionsEl === "Ingredients"){
+    //TODO
+    "Area Search"
+  }
 }
 
+//TODO:
+// When clicking a meal, display ingredients, and method.
+
+//Implement favouriting, where ID is stored and placed into favourites.

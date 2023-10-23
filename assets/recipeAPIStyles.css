@@ -2,7 +2,14 @@
     border: 1px solid black;
     width: 300px;
     height: 500px;
+    transition: all 0.5s;
+    z-index: 1;
   }
+
+  /* .sortWrapper:hover{
+    transform: scale(1.2);  
+    z-index: -1;
+} */
   
   .imageWrapper{
     border: 1px solid black;
