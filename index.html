@@ -58,7 +58,7 @@
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary">
+                  <a class="button is-primary js-modal-trigger" data-target="modal-sign-up">
                     <strong>Sign up</strong>
                   </a>
                   <a class="button is-light">
@@ -69,6 +69,63 @@
             </div>
           </div>
         </nav>
+ <!--html for the modal triggered by sign-up btn-->     
+  <div id="modal-sign-up" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Sign Up</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">First Name</label>
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="e.g. John" value="">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Last Name</label>
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="e.g. Smith" value="">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input is-success" type="email" placeholder="email address" value="">
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="type password max. 8 characters" value="">
+          </div>
+        </div>
+        <div class="field">
+          <label>Confirm Password</label>
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="retype password" value="">
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox">
+              I agree to the 
+<!--Check if href needs updating on deployment-->
+              <a class="open-window close-window" href="http://127.0.0.1:5500/ts&cs.html">terms and conditions </a>
+            </label>
+            
+          </div>
+        </div>
+      </section>
+      <footer class="modal-class-foot">
+        <button class="button is-success">Sign up</button>
+        <button class="button modal-cancel">Cancel</button>
+      </footer>
+    </div>
+  </div>
 </header>
 
 
