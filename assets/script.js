@@ -5,11 +5,11 @@ var contactNavEl = $('#contact-nav');
 
 //Event listener on nav items changes url to other page
 aboutNavEl.on('click', function () {
-    document.location.replace('./about.html');
+    document.location.assign('./about.html');
   });
 
 contactNavEl.on('click', function () {
-    document.location.replace('./contact.html');
+    document.location.assign('./contact.html');
 });
 
 //Click event causes reload
@@ -21,40 +21,9 @@ homeNavEl.on('click', function() {
 function backButton() {
     var backNavEl = $('#back-nav');
     backNavEl.on('click', function () {
-        document.location.replace('./index.html');
+        document.location.assign('./index.html');
     });
 };
-
-//open and close new windows
-$(document).ready(function() {
-    var newWindow;
-
-    function openWin() {
-        newWindow = window.open(_blank, "", "width=200,height=100");
-    }
-
-    function closeWin() {
-        newWindow.close();
-    }
-
-    document.querySelector('.open-window') {
-        openWin('http://127.0.0.1:5500/ts&cs.html');
-    }
-
-    document.querySelector('.close-window') {
-        closeWin('http://127.0.0.1:5500/ts&cs.html');
-    }
-
-    (document.querySelectorAll('.open-window') || []).forEach(($trigger) => {
-        const $windowToOpen = $trigger.dataset.href;
-        const $target = document.getElementById(windowToOpen);
-
-        $trigger.addEventListener('click', () => {
-            openWin($target);
-        });
-    });
-})
-
 
 //code for nav hamburger to toggle 
 $(document).ready(function() {
