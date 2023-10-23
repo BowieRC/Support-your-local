@@ -37,3 +37,53 @@ $(document).ready(function() {
   
     });
   });
+
+  //modal code
+    document.addEventListener('DOMContentLoaded', () => {
+        //Open and close modal functions
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+    //Click event on buttons to open a specific modal
+    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+        const modal = $trigger.dataset.target;
+        const $target = document.getElementById(modal);
+
+        $trigger.addEventListener('click', () => {
+            openModal($target);
+        });
+    });
+
+    //Key event to close modals
+    document.addEventListener('keydown', (event) => {
+        if (event.code === 'Escape') {
+            closeAllModals();
+        }
+    });
+
+    //Click event on child elements to close the parent modal
+    (document.querySelectorAll('.modal-background, .modal-cancel, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+        const $target = $close.closest('.modal');
+    
+        $close.addEventListener('click', () => {
+            closeModal($target);
+        });
+    });
+});
+
+
+
+
+
+
