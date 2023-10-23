@@ -6,28 +6,72 @@
   <link rel="stylesheet" href="./assets/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
   <title>Support You Local</title>
-  
+  <!-- jQuery tag added here as it didn't work at the end of the body-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <header>
-  <!---just a place holder for nav bar, links-->
+  <!---Copy this to each page to create consistency-->
   <h1>Support You Local</h1>
   <h2>Local grocers straight to you</h2>
-  <img src="#" alt="#" width="#" height="#">
-      <nav>
-        <a href="#"></a>
-      </nav>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+          
+            <a class="navbar-item">
+
+              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+            <!--navbar-burger appears for touch screen only-->
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+         <!-- navbar-menu is hidden on touch devices <1024px-->
+          <!-- each button id is format "shopping-nav"; nabarItemsMenu links to data-target of hamburger-->
+          <div id="navbarItemsMenu" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" id="home-nav">
+                Home
+              </a>
+        
+              <a class="navbar-item" id="recipes-nav">
+                Recipes
+              </a>
+
+              <a class="navbar-item" id="shopping-list-nav">
+                Shopping List
+              </a>
+            
+              <a class="navbar-item" id="about-nav">
+                About us
+              </a>
+
+              <a class="navbar-item" id="contact-nav">
+                Contact us
+              </a>
+            
+            </div>
+        
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary">
+                    <strong>Sign up</strong>
+                  </a>
+                  <a class="button is-light">
+                    Log in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
 </header>
 
-<secton class="#">
-  <!---all subject to change, just place holders-->
-  <button class="#">Recipies</button>
-  <button class="#">Grocery list</buttton>
-  <button class="#">About us</button>
-  <button class="#">Contact us</button>
-  <button class="#">Login</button>
-  <button class="#"> Search</button>
+
 <!----This can be for the hero wrapper-->
-</secton>
 <section class="#">
 
   
@@ -85,15 +129,18 @@
       </div>
    
     </main>
-  <!-- <script src="./assets/js/jquery.js"></script> -->
+
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="./assets/google-maps.js"></script>
-  
-  
-    
+
+
 </body>
 <footer>
-<h3>contact us. Please. </h3>>
+<h3>contact us. Please. </h3>
+
 </footer>
+
+
 </html>
