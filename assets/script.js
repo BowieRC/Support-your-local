@@ -17,13 +17,13 @@ homeNavEl.on('click', function() {
     location.reload();
 });
 
-//Below is script relevant to pages with Back button
-function backButton() {
-    var backNavEl = $('#back-nav');
-    backNavEl.on('click', function () {
-        document.location.assign('./index.html');
-    });
-};
+
+//Below is script relevant to Contact and About Pages
+var backNavEl = $('#back-nav');
+
+backNavEl.on('click', function () {
+    document.location.assign('./index.html');
+})
 
 //code for nav hamburger to toggle 
 $(document).ready(function() {
