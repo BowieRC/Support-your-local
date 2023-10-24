@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/recipeAPIStyles.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Temporary replace w/ framework -->
+    <section id="container" class="container">
+        <div id="sortByContainer">
+          <label for="sortBy">Sort By:</label>
+          <select name="sortBy" id="sortOptions">
+            <option value="null">Sort By</option>
+            <option value="Categories">Categories</option>
+            <option value="Area">Area</option>
+            <option value="Ingredients">Ingredients</option>   
+            </select>
+        </div>
+        <div id = "filterOptions" class="hidden">             
+          <label id = "filterOptionsLabel" for = "fOptions"></label>
+          <select name="fOptions" id="fOptionsList">
+            <option value=null>--Sort By--</option>
+          </select>
+        </div>
+        
+         <section id="sort-container">
+          <div id="category-container"></div>
+          <div id="area-container"></div>
+        </section>
+          
+        
+      </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/recipeAPI.js"></script>
+</body>
+</html>
