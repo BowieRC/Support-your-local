@@ -186,10 +186,9 @@ function displayResults(){
     var closeButton = $("<button>");
     var displayMealTitle = $("<h1>");
     var displayMealImage = $("<div>");
-    var displayMealIngredients = ("<div>");
+    var displayMealIngredients = $("<div>");
     var displayMealMethod = $("<p>");
 
-    var count = 0;
     var stringIngredientName = [
       data.meals[0].strIngredient1, 
       data.meals[0].strIngredient2, 
@@ -239,7 +238,7 @@ function displayResults(){
 
     function addIngToObj(){
       for(i = 0; i<stringIngredientName.length; i++){
-          if(stringIngredientName[i] != ''){
+          if(stringIngredientName[i] != '' && stringIngredientName[i] != null){
             stringIngredientObject.push({
               name: stringIngredientName[i],
               amount: stringIngredientAmount[i]
@@ -247,8 +246,9 @@ function displayResults(){
           }
       }
       for(i = 0; i<stringIngredientObject.length; i++){
-        console.log(stringIngredientObject[i].amount + " " + stringIngredientObject[i].name);
-
+        var mealIngredient = $("<li>");
+        mealIngredient.text(stringIngredientObject[i].amount + " " + stringIngredientObject[i].name);
+        displayMealIngredients.append(mealIngredient);
     }
   }
 
@@ -259,10 +259,8 @@ function displayResults(){
       closeButton.text("Close");
         displayMealTitle.text(selectedMeal.strMeal);
        displayMealImage.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
-      // for i
       displayMealMethod.text(selectedMeal.strInstructions);
-      // if(displa)
-      
+      displayMealIngredients.text()
 
       
   
@@ -272,6 +270,7 @@ function displayResults(){
       displayMealContainer.append(displayMealTitle);
       displayMealContainer.append(displayMealImage);
       displayMealContainer.append(displayMealMethod);
+      displayMealContainer.append(displayMealIngredients);
   
       $("#sortByContainer").addClass("hidden");
       $("#filterOptions").addClass("hidden");
