@@ -6,6 +6,31 @@ let infowindow;
 
 function initMap() {
   const adelaide = new google.maps.LatLng(-34.928, 138.599);
+  // find current location
+
+  
+}
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: pos,
+        zoom: 15,
+      });
+      infowindow = new google.maps.InfoWindow();
+      const marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+      });
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    window.alert("Geolocation is not supported by this browser.");
+  }
+
 //distance between locations
 //   const directionsRenderer = new google.maps.DirectionsRenderer();
 //   const directionsService = new google.maps.DirectionsService();
@@ -28,7 +53,8 @@ infowindow = new google.maps.InfoWindow();
 //both the origin and destination inputs below are custom and refrenced from the HTML. were previously start and end of the input fields respectfully.
   document.getElementById("origin-input").addEventListener("change", onChangeHandler);
   document.getElementById("destination-input").addEventListener("change", onChangeHandler);
-}
+
+  // This is for the route
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
   const start = document.getElementById("origin-input").value;
