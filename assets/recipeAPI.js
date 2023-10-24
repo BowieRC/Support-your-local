@@ -124,12 +124,12 @@ function getIngs(){
 function displayResults(){
     var sortCont = document.getElementById("sort-container");
 
-    if(currentSearchMeals.length != 0){
-      currentSearchMeals = [];
+    // if(currentSearchMeals.length != 0){
+    //   currentSearchMeals = [];
       while (sortCont.hasChildNodes()){
         sortCont.removeChild(sortCont.firstChild);
       }
-    }
+    // }
   
   var searchParameter = filterOptionsEl.val();
 
@@ -249,6 +249,7 @@ function displayResults(){
   }
 
     addIngToObj();
+    setToHistory();
 
     displayMealContainer.attr("id", "display-container");
       closeButton.attr("id", "btn-close");
@@ -285,7 +286,8 @@ function displayResults(){
   sortContainer.append(sortWrapper);
   sortWrapper.append(imageWrapper);
   sortWrapper.append(sortedTitle);
-  sortWrapper.append(button)
+  sortWrapper.append(button);
+
   }
         })
   }
@@ -405,7 +407,7 @@ function displayResults(){
         displayMealIngredients.append(mealIngredient);
     }
   }
-
+    setToHistory();
     addIngToObj();
 
     displayMealContainer.attr("id", "display-container");
@@ -435,6 +437,8 @@ function displayResults(){
         $("#sortByContainer").removeClass("hidden");
         $("#filterOptions").removeClass("hidden");
         $("#sort-container").removeClass("hidden");
+
+        
 }) 
 
       })
@@ -444,7 +448,9 @@ function displayResults(){
   sortContainer.append(sortWrapper);
   sortWrapper.append(imageWrapper);
   sortWrapper.append(sortedTitle);
-  sortWrapper.append(button)
+  sortWrapper.append(button);
+
+
 
   }
         })
@@ -474,11 +480,6 @@ function displayResults(){
   
   sortedTitle.text(currentSearchMeals.meals[i].strMeal);
   button.text(currentSearchMeals.meals[i].strMeal)
-
-
-  button.on('click', (event) => {
-    button = event.target;
-  });  
 
   button.on('click', async (event) => {
    
@@ -571,6 +572,7 @@ function displayResults(){
   }
 
     addIngToObj();
+    setToHistory();
 
     displayMealContainer.attr("id", "display-container");
       closeButton.attr("id", "btn-close");
@@ -608,7 +610,7 @@ function displayResults(){
   sortContainer.append(sortWrapper);
   sortWrapper.append(imageWrapper);
   sortWrapper.append(sortedTitle);
-  sortWrapper.append(button)
+  sortWrapper.append(button);
 
   }
         })
@@ -616,3 +618,161 @@ function displayResults(){
 }
 
 //Implement favouriting, where ID is stored and placed into favourites.
+
+// history
+function setToHistory(){
+  var mealHistory = {
+    mealID: selectedMeal.idMeal,
+    mealName: selectedMeal.strMeal,
+    mealThumb: selectedMeal.strMealThumb
+  };
+
+  localStorage.setItem("lastMeal", JSON.stringify(mealHistory));
+}
+
+function pullFromHistory() {
+var lastMeal = JSON.parse(localStorage.getItem("lastMeal"));
+console.log(lastMeal.mealThumb);
+
+  $('.imageWrapper').attr("id", lastMeal.mealID);
+  $('.imageWrapper').attr("style", "background-image: url(" + lastMeal.mealThumb + ")");
+  $(".historyOpenMeal").attr("id", + lastMeal.mealID);
+  
+  $(".storedTitle").text(lastMeal.mealName);
+  $(".historyOpenMeal").text(lastMeal.mealName)
+
+  $(".historyOpenMeal").on('click', async (event) => {
+   
+    button = event.target;
+    mealID = button.getAttribute("id");
+
+    fetch( "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealID, {
+
+    })
+    .then(function (response) {
+      return response.json();
+  })
+  .then(function (data) {
+  
+      for(i=0; i<data.meals.length; i++){
+        if(data.meals[i].idMeal == mealID){
+          selectedMeal = data.meals[i];
+        } 
+      } 
+
+    
+    var displayMealContainer = $("<section>");
+    var closeButton = $("<button>");
+    var displayMealTitle = $("<h1>");
+    var displayMealImage = $("<div>");
+    var displayMealIngredients = $("<div>");
+    var displayMealMethod = $("<p>");
+
+    var stringIngredientName = [
+      data.meals[0].strIngredient1, 
+      data.meals[0].strIngredient2, 
+      data.meals[0].strIngredient3, 
+      data.meals[0].strIngredient4, 
+      data.meals[0].strIngredient5,
+      data.meals[0].strIngredient6, 
+      data.meals[0].strIngredient7, 
+      data.meals[0].strIngredient8, 
+      data.meals[0].strIngredient9, 
+      data.meals[0].strIngredient10,
+      data.meals[0].strIngredient11, 
+      data.meals[0].strIngredient12, 
+      data.meals[0].strIngredient13, 
+      data.meals[0].strIngredient14, 
+      data.meals[0].strIngredient15,
+      data.meals[0].strIngredient16, 
+      data.meals[0].strIngredient17, 
+      data.meals[0].strIngredient18, 
+      data.meals[0].strIngredient19, 
+      data.meals[0].strIngredient20, 
+    ]
+    var stringIngredientAmount = [
+      data.meals[0].strMeasure1, 
+      data.meals[0].strMeasure2, 
+      data.meals[0].strMeasure3, 
+      data.meals[0].strMeasure4, 
+      data.meals[0].strMeasure5,
+      data.meals[0].strMeasure6, 
+      data.meals[0].strMeasure7, 
+      data.meals[0].strMeasure8, 
+      data.meals[0].strMeasure9, 
+      data.meals[0].strMeasure10,
+      data.meals[0].strMeasure11, 
+      data.meals[0].strMeasure12, 
+      data.meals[0].strMeasure13, 
+      data.meals[0].strMeasure14, 
+      data.meals[0].strMeasure15,
+      data.meals[0].strMeasure16, 
+      data.meals[0].strMeasure17, 
+      data.meals[0].strMeasure18, 
+      data.meals[0].strMeasure19, 
+      data.meals[0].strMeasure20,
+    ]
+
+    var stringIngredientObject = [];
+
+    function addIngToObj(){
+      for(i = 0; i<stringIngredientName.length; i++){
+          if(stringIngredientName[i] != '' && stringIngredientName[i] != null){
+            stringIngredientObject.push({
+              name: stringIngredientName[i],
+              amount: stringIngredientAmount[i]
+            })
+          }
+      }
+      for(i = 0; i<stringIngredientObject.length; i++){
+        var mealIngredient = $("<li>");
+        mealIngredient.text(stringIngredientObject[i].amount + " " + stringIngredientObject[i].name);
+        displayMealIngredients.append(mealIngredient);
+    }
+  }
+
+    addIngToObj();
+    setToHistory();
+
+    displayMealContainer.attr("id", "display-container");
+      closeButton.attr("id", "btn-close");
+      closeButton.text("Close");
+        displayMealTitle.text(selectedMeal.strMeal);
+       displayMealImage.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
+      displayMealMethod.text(selectedMeal.strInstructions);
+      displayMealIngredients.text()
+
+      
+  
+  
+      $("#container").append(displayMealContainer);
+      displayMealContainer.append(closeButton);
+      displayMealContainer.append(displayMealTitle);
+      displayMealContainer.append(displayMealImage);
+      displayMealContainer.append(displayMealMethod);
+      displayMealContainer.append(displayMealIngredients);
+  
+      $("#sortByContainer").addClass("hidden");
+      $("#filterOptions").addClass("hidden");
+      $("#sort-container").addClass("hidden");
+  
+      closeButton.on('click', () => {
+        displayMealContainer.remove();
+        $("#sortByContainer").removeClass("hidden");
+        $("#filterOptions").removeClass("hidden");
+        $("#sort-container").removeClass("hidden");
+}) 
+
+      })
+  });
+  
+  
+  // sortContainer.append(sortWrapper);
+  // sortWrapper.append(imageWrapper);
+  // sortWrapper.append(sortedTitle);
+  // sortWrapper.append(button);
+
+  
+}
+
+$("body").on("load", pullFromHistory());
