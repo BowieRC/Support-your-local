@@ -5,11 +5,8 @@ let service;
 let infowindow;
 
 function initMap() {
-  const adelaide = new google.maps.LatLng(-34.928, 138.599);
+ // const adelaide = new google.maps.LatLng(-34.928, 138.599);
   // find current location
-
-  
-}
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const pos = {
@@ -30,6 +27,9 @@ function initMap() {
     // Browser doesn't support Geolocation
     window.alert("Geolocation is not supported by this browser.");
   }
+  
+}
+ 
 
 //distance between locations
 //   const directionsRenderer = new google.maps.DirectionsRenderer();
