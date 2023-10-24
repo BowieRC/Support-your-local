@@ -1,6 +1,7 @@
 var homeNavEl = $('#home-nav');
 var aboutNavEl = $('#about-nav');
 var contactNavEl = $('#contact-nav');
+var recipesNavEl = $('#recipes-nav');
 
 
 //Event listener on nav items changes url to other page
@@ -12,10 +13,15 @@ contactNavEl.on('click', function () {
     document.location.assign('./contact.html');
 });
 
+recipesNavEl.on('click', function () {
+    document.location.assign('./recipes.html');
+})
+
 //Click event causes reload
 homeNavEl.on('click', function() {
     location.reload();
 });
+
 
 
 //code for nav hamburger to toggle 
