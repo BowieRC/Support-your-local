@@ -18,13 +18,6 @@ homeNavEl.on('click', function() {
 });
 
 
-//Below is script relevant to Contact and About Pages
-var backNavEl = $('#back-nav');
-
-backNavEl.on('click', function () {
-    document.location.assign('./index.html');
-})
-
 //code for nav hamburger to toggle 
 $(document).ready(function() {
 
@@ -36,7 +29,7 @@ $(document).ready(function() {
         $(".navbar-menu").toggleClass("is-active");
   
     });
-  });
+});
 
   //modal code
     document.addEventListener('DOMContentLoaded', () => {
@@ -54,36 +47,40 @@ $(document).ready(function() {
                 closeModal($modal);
             });
         }
+    
 
     //Click event on buttons to open a specific modal
-    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-        const modal = $trigger.dataset.target;
-        const $target = document.getElementById(modal);
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
 
-        $trigger.addEventListener('click', () => {
-            openModal($target);
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        //Key event to close modals
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Escape') {
+                closeAllModals();
+            }
+        });
+
+        //Click event on child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-cancel, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+        
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
         });
     });
 
-    //Key event to close modals
-    document.addEventListener('keydown', (event) => {
-        if (event.code === 'Escape') {
-            closeAllModals();
-        }
-    });
 
-    //Click event on child elements to close the parent modal
-    (document.querySelectorAll('.modal-background, .modal-cancel, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-        const $target = $close.closest('.modal');
-    
-        $close.addEventListener('click', () => {
-            closeModal($target);
-        });
+$(document).ready(function() {
+    $("#terms-link").click(function() {
+        window.open("ts&cs.html", "_blank");
     });
 });
-
-
-
-
 
 
