@@ -18,25 +18,42 @@
             <div class="hero-head">
                 <div class="columns is-mobile is-marginless heading has-text-weight-bold">
                     <div class="column left">
-                        <a class="navbar-item has-text-white" id="logo-nav">PLACEHOLDER</a>
-                    </div>
-                    <div class="column center desktop">
-                        <a class="navbar-item has-text-white" id="home-nav">Home</a>
-                        <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
-                        <a class="navbar-item has-text-white" id="shopping-list-nav">Shopping List</a>                    
-                        <a class="navbar-item has-text-white" id="about-nav">About us</a>        
-                    </div>
-                    <div class="column right desktop">
-                        <a class="navbar-item has-text-white" id="signin-nav">Sign In</a>
-                        <a class="navbar-item has-text-white" id="contact-nav">Contact us</a>
-                    </div>
-                    <div>
+                        <a class="navbar-item has-text-white" id="logo-nav">
+                          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                        </a>
+                        <!--navbar-burger appears for touch screen only-->
                         <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
-                          </a>
+                        </a>
                     </div>
+      <!--CONFLICT -- there may be a conflict here with styling - one was   <div id="navbarItemsMenu" class="navbar-menu"> <div class="navbar-start">
+                 the other was                     <div class="column center desktop"> -->
+                     <div class="column center desktop navbar-menu" id="navbarItemsMenu">
+                       <div class="navbar-start">
+                          <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                          <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+                 
+                          <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                          <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                         
+                      </div>
+                    </div>
+                  
+                    <div class="column right desktop navbar-end">
+                       <div class="navbar-item">
+                           <div class="buttons">
+                                <a class="button is-primary js-modal-trigger has-text-white" data-target="modal-sign-up">
+                                    <strong>Sign up</strong>
+                                </a>
+                                <a class="button is-light has-text-white">
+                                Log in
+                                </a>
+                           </div>
+                       </div>
+                    </div>
+
                 </div>
             </div>
         
