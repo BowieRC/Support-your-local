@@ -18,26 +18,27 @@
           <section class="hero is-fullheight">
             <div class="hero-head">
                 <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                    <div class="column left">
-                        <a class="navbar-item has-text-white" id="logo-nav">
-                          <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;">
-                        </a>
-                        <!--navbar-burger appears for touch screen only-->
-                        <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>
-                    </div>
-      <!-- there may be a conflict here with styling - one was   <div id="navbarItemsMenu" class="navbar-menu"> <div class="navbar-start">
-                 the other was                     <div class="column center desktop"> -->
-                         <div id="navbarItemsMenu" class="column center desktop navbar-menu">
-                           <div class="navbar-start">
-                              <a class="navbar-item has-text-white" id="home-nav">Home</a>
-                              <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
-                     
-                              <a class="navbar-item has-text-white" id="about-nav">About us</a>  
-                              <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                    <!--navbar-burger must appear as last child of navbar-brand in order to function-->
+
+                        <div class="column left navbar-brand ">
+                            <a class="navbar-item has-text-white" id="logo-nav">
+                              <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;">
+                            </a>
+                            <!--navbar-burger appears for touch screen only-->
+                            <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!--change background of menu in navburger-->
+                        <div id="navbarItemsMenu" class="column center desktop navbar-menu transparent-background">
+                         <div class="navbar-start">
+                            <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                            <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+                   
+                            <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                            <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
                              
                           </div>
                         </div>
@@ -54,8 +55,7 @@
                                </div>
                            </div>
                         </div>
-                    
-                  </nav>
+                      </div>
                 </div>
             </div>        
         </section>

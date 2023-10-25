@@ -6,12 +6,7 @@
 @media (max-width: 1024px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
 @media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } } (
 
-.navbar-fixed-full-width {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content:space-between;
-}
+
 
 /*map code*/
 

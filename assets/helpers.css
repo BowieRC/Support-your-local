@@ -19,3 +19,6 @@
         display: none;
     }
 }
+.transparent-background {
+    background-color: none;
+}
