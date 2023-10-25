@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./assets/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
     <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA">
-    <title>Support You Local</title>
+    <title>Support Your Local</title>
     <!-- jQuery tag added here as it didn't work at the end of the body-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
@@ -132,29 +132,46 @@
       
     </header>
     <main>
-  <!--add map section-->
-    <div style="display: none">
-      <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" />
-  
-      <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" />
-  
-      <div id="mode-selector" class="controls">
-        <input type="radio" name="type" id="changemode-walking" checked="checked" />
-        <label for="changemode-walking">Walking</label>
-  
-        <input type="radio" name="type" id="changemode-transit" />
-        <label for="changemode-transit">Transit</label>
-  
-        <input type="radio" name="type" id="changemode-driving" />
-        <label for="changemode-driving">Driving</label>
-      </div>
-    </div>
-  
-    <div id="map"></div>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA&callback=initMap&libraries=places&v=weekly"
-        defer
-      ></script>
+      <!--add map section-->
+        <div style="display: none">
+          <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" />
+      
+          <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" />
+      
+          <div id="mode-selector" class="controls">
+            <input type="radio" name="type" id="changemode-walking" checked="checked" />
+            <label for="changemode-walking">Walking</label>
+      
+            <input type="radio" name="type" id="changemode-transit" />
+            <label for="changemode-transit">Transit</label>
+      
+            <input type="radio" name="type" id="changemode-driving" />
+            <label for="changemode-driving">Driving</label>
+          </div>
+        </div>
+      
+        <div id="map"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA&callback=initMap&libraries=places&v=weekly"
+            defer></script>
+          
+        <aside>
+          <!--Left side of web page-->
+          <h2>Heading placeholder</h2>
+          <img src="#" alt="#" width="#" height="#"> 
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum minus sint, iure repellendus sapiente mollitia. Corporis exercitationem ad consequatur dolores, quasi molestias provident quas? Pariatur quaerat excepturi qui quia ullam!</p>
+        </aside>
+        <div>
+            <section>
+              <!--This is where the searched content will be displayed-->
+              <img src="#" alt="#" width="#" height="#">  
+              <h2>Searched content displayed here</h2> 
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>  
+            </section>
+           
+        </div>
+          
       
     </main>
   
