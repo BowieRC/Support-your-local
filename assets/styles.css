@@ -1,4 +1,20 @@
 
+/*header styling*/
+.hero {
+  background: black url(/assets/images/hero-image-desktop.jpeg) center / cover;
+}
+@media (max-width: 1024px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
+@media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } } (
+
+.navbar-fixed-full-width {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content:space-between;
+}
+
+/*map code*/
+
 #map {
   height: 50%;
   width: 70%;
@@ -52,10 +68,5 @@ body {
   font-weight: 300;
 }
 
-.navbar-fixed-full-width {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content:space-between;
-}
+
 
