@@ -23,21 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
             var confirmPassword = document.querySelector('input[name="')
 
             var user = {
-                firstName: firstNameInput.ariaValueMax.trim(),
+                firstName: firstNameInput.value.trim(),
                 lastName: lastNameInput.value.trim(),
                 email: emailInput.value.trim(),
                 password: passwordInput.value.trim(),
             };
 
+            localStorage.setItem("user", JSON.stringify(user));
+            var userCredentials = localStorage.getItem("user");
+            console.log(JSON.parse(userCredentials), "userCredentials");
+
         })
-
-       
-
-
-
-
-
-
 
     });
 
