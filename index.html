@@ -14,8 +14,7 @@
 
   <body>
     <header>
-  <!-- for the nav bar -->
-        <section class="hero is-fullheight">
+          <section class="hero is-fullheight">
             <div class="hero-head">
                 <div class="columns is-mobile is-marginless heading has-text-weight-bold">
                     <div class="column left">
@@ -31,43 +30,36 @@
                     </div>
       <!-- there may be a conflict here with styling - one was   <div id="navbarItemsMenu" class="navbar-menu"> <div class="navbar-start">
                  the other was                     <div class="column center desktop"> -->
-                     <div class="column center desktop navbar-menu" id="navbarItemsMenu">
-                       <div class="navbar-start">
-                          <a class="navbar-item has-text-white" id="home-nav">Home</a>
-                          <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
-                 
-                          <a class="navbar-item has-text-white" id="about-nav">About us</a>  
-                          <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
-                         
-                      </div>
-                    </div>
+                         <div class="column center desktop navbar-menu" id="navbarItemsMenu">
+                           <div class="navbar-start">
+                              <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                              <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+                     
+                              <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                              <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                             
+                          </div>
+                        </div>
                   
-                    <div class="column right desktop navbar-end">
-                       <div class="navbar-item">
-                           <div class="buttons">
-                                <a class="button is-primary js-modal-trigger has-text-white" data-target="modal-sign-up">
-                                    <strong>Sign up</strong>
-                                </a>
-                                <a class="button is-light has-text-white">
-                                Log in
-                                </a>
+                        <div class="column right desktop navbar-end">
+                           <div class="navbar-item">
+                               <div class="buttons">
+                                 <!-- probably need to remove is-primary styling from here-->
+                                    <a class="button is-primary js-modal-trigger has-text-white" data-target="modal-sign-up">
+                                        <strong>Sign up</strong>
+                                    </a>
+                                    <a class="button is-light has-text-white">
+                                    Log in
+                                    </a>
+                               </div>
                            </div>
-                       </div>
-                    </div>
-
+                        </div>
+                    
+                  </nav>
                 </div>
-            </div>
-        
-            <!-- ---------for the main title------------- -->
-            <div class="hero-body">
-                <div class="is-overlay has-text-centered" style="top: 400px">
-                    <h1 class="title is-1 has-text-weight-bold has-text-white">Support Your <span>Local</span></h1>
-                    <br>
-                    <h2 class="subtitle is-4 has-text-white">From local grocers to you</h2>
-                </div>
-            </div>     
-        
+            </div>        
         </section>
+  
       <!--html for the modal triggered by sign-up btn-->     
         <div id="modal-sign-up" class="modal">
           <div class="modal-background"></div>
