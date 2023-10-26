@@ -24,3 +24,13 @@
 .transparent-background {
     background-color: transparent;
   }
+
+/*add margin to top of buttons*/
+.button-margins {
+    margin-top: 0.5rem;
+    margin-bottom: 0rem!important;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
+
