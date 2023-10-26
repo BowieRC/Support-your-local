@@ -19,11 +19,8 @@
         display: none;
     }
 }
+
+/*adjust navbar menu background when in burger*/
 .transparent-background {
     background-color: transparent;
-}
-
-
-.height-override {
-    max-height:5.0rem!important;
-}
+  }

@@ -4,8 +4,15 @@
   background: black url(/assets/images/hero-image-desktop.jpeg) center / cover;
 }
 @media (max-width: 1024px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
-@media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } } (
+@media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
 
+
+
+
+/*adjustments for landing page styling*/
+.height-override {
+  max-height:5.0rem!important;
+}
 
 /*map code*/
 
