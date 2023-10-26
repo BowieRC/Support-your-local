@@ -83,10 +83,6 @@ $(document).ready(function() {
     });
 
 
-$(document).ready(function() {
-    $("#terms-link").click(function() {
-        window.open("ts&cs.html", "_blank");
-    });
-});
+
 
 

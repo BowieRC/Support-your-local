@@ -2,16 +2,23 @@
 
 
 
-//run this code to access a toggleswitch when modal is open (.is-active)
+//run this code to hold other code for when modal is showing
 
 document.addEventListener('DOMContentLoaded', () => {
     
     var signupModalEl = $("#modal-sign-up")
     var signUpButton = document.querySelector("#signup-button");
-    
+    // var openModal = $(signupModalEl).show();
 
-    $(signupModalEl).show('show', function() {
-        console.log('modal showing');
+    //
+    function checkOpen() {
+        $(signupModalEl).hasClass('is-active');
+            return true
+        
+    }
+
+    if (checkOpen()) {
+        console.log('checked - modal open');
         
         signUpButton.addEventListener("click", function(event) {
             event.preventDefault;
@@ -64,21 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             checkInputEls();
-                    
-                                                   
-    
-            
-         
 
-           
-                
-            
-           
-
-
-
-         
-        
             //confirm password must match password in order to progress. 
             
             //Sign up button only available when all fields are full and when checkbox ticked.
@@ -111,7 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
             $('input[type="checkbox"]').prop('checked', false);
 
         });
+       
 
-    });
+
+    };
 
 });
+
+$(document).ready(function() {
+    $("#terms-link").click(function() {
+        window.open("ts&cs.html", "_blank");
+    });
+})
