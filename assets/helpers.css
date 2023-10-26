@@ -22,3 +22,8 @@
 .transparent-background {
     background-color: transparent;
 }
+
+
+.height-override {
+    max-height:5.0rem!important;
+}
