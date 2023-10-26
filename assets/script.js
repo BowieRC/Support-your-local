@@ -55,7 +55,7 @@ $(document).ready(function() {
         }
     
 
-    //Click event on buttons to open a specific modal
+        //Click event on buttons to open a specific modal
         (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
             const modal = $trigger.dataset.target;
             const $target = document.getElementById(modal);
