@@ -1,0 +1,50 @@
+STYLiNG GUiDE
+---------------------------------------
+
+Everyone uses and adds as needed to communicate consistent styling
+
+BULMA HELPERS USED
+
+for text:
+has-text-white
+
+Bulma green ('success'
+has-background-success
+
+Bulma buttons
+
+
+
+
+
+---------------------------------------
+
+CUSTOMISATION THROUGH .CSS files
+
+backgrounds often transparent
+	may need override class like this one in helpers.css
+.transparent-background {
+	background-color: transparent;
+}
+
+add !important at the end of the property to support override
+
+
+
+---------------------------------------------
+
+CREATE ROOT in CSS 
+
+If we need it, someone could add :root in .css (as below from UADEL repo)
+
+/* create custom CSS variables (also called custom properties) and apply them to the root of the page, making them accessible to all other CSS */
+/*apply using e.g. background-color: var(--dark);*/
+
+:root {
+  /* declare a variable with `--` syntax */
+  --dark: #13293d;
+  --light: #fff;
+  --navlink-color: #b9c6ae;
+    /* You can use it with any value that is repeated throughout the sheet */
+  --border-radius: 50px;
+}

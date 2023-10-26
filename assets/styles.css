@@ -4,13 +4,14 @@
   background: black url(/assets/images/hero-image-desktop.jpeg) center / cover;
 }
 @media (max-width: 1024px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
-@media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } } (
+@media (max-width: 768px) { .hero {background: black url(/assets/images/hero-image-mobile.jpeg) center / cover; } }
 
-.navbar-fixed-full-width {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content:space-between;
+
+
+
+/*adjustments for landing page styling*/
+.height-override {
+  max-height:5.0rem!important;
 }
 
 /*map code*/

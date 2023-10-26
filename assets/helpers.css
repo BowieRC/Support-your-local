@@ -19,3 +19,8 @@
         display: none;
     }
 }
+
+/*adjust navbar menu background when in burger*/
+.transparent-background {
+    background-color: transparent;
+  }
