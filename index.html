@@ -1,159 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
-  <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA">
-  <title>Support You Local</title>
-  <!-- jQuery tag added here as it didn't work at the end of the body-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<header>
-  <!---Copy this to each page to create consistency-->
-  <h1>Support You Local</h1>
-  <h2>Local grocers straight to you</h2>
-        <nav class="navbar" role="navigation" aria-label="main-navigation">
-          <div class="navbar-brand">
-          
-            <a class="navbar-item">
 
-              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
-            <!--navbar-burger appears for touch screen only-->
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-        
-         <!-- navbar-menu is hidden on touch devices <1024px-->
-          <!-- each button id is format "shopping-nav"; nabarItemsMenu links to data-target of hamburger-->
-          <div id="navbarItemsMenu" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" id="home-nav">
-                Home
-              </a>
-        
-              <a class="navbar-item" id="recipes-nav">
-                Recipes
-              </a>
-            
-              <a class="navbar-item" id="about-nav">
-                About us
-              </a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/helpers.css">
+    <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA">
+    <title>Support Your Local</title>
+    <!-- jQuery tag added here as it didn't work at the end of the body-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
 
-              <a class="navbar-item" id="contact-nav">
-                Contact us
-              </a>
-            
-            </div>
-        
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-primary js-modal-trigger" data-target="modal-sign-up">
-                    <strong>Sign up</strong>
-                  </a>
-                  <a class="button is-light">
-                    Log in
-                  </a>
+  <body>
+    <header>
+          <section class="hero is-fullheight">
+            <div class="hero-head">
+                <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+                    <!--navbar-burger must appear as last child of navbar-brand in order to function-->
+
+                        <div class="column left navbar-brand ">
+                            <a class="navbar-item has-text-white height-override " id="logo-nav">
+                              <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
+                            </a>
+                            <!--navbar-burger appears for touch screen only-->
+                            <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!--change background of menu in navburger-->
+                        <div id="navbarItemsMenu" class="column center desktop navbar-menu transparent-background">
+                         <div class="navbar-start">
+                            <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                            <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+                   
+                            <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                            <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                             
+                          </div>
+                        </div>
+                  
+                        <div class="column right desktop navbar-end">
+                           <div class="navbar-item">
+                               <div class="buttons">
+                                    <a class="button is-black js-modal-trigger has-text-white" data-target="modal-sign-up">
+                                        <strong>Sign up</strong>
+                                    </a>
+                                    <a class="button is-light has-text-success">
+                                    Log in
+                                    </a>
+                               </div>
+                           </div>
+                        </div>
+                      </div>
+                </div>
+            </div>        
+        </section>
+  
+      <!--html for the modal triggered by sign-up btn-->     
+        <div id="modal-sign-up" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Sign Up</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+              <div class="field">
+                <label class="label">First Name</label>
+                <div class="control">
+                  <input class="input is-success" type="text" placeholder="e.g. John" value="">
                 </div>
               </div>
-            </div>
-          </div>
-        </nav>
- <!--html for the modal triggered by sign-up btn-->     
-  <div id="modal-sign-up" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Sign Up</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section id="signup-body" class="modal-card-body">
-        <div class="field">
-          <label class="label">First Name</label>
-          <div class="control">
-            <input class="input is-success" name="first-name" type="text" placeholder="e.g. John" value="">
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Last Name</label>
-          <div class="control">
-            <input class="input is-success" name="last-name" type="text" placeholder="e.g. Smith" value="">
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control">
-            <input class="input is-success" name="email" type="email" placeholder="email address" value="">
-          </div>
-        </div>
-        <div class="field">
-          <label>Password</label>
-          <div class="control">
-            <input class="input is-success" name= "password" type="text" placeholder="type password max. 8 characters" value="">
-          </div>
-        </div>
-        <div class="field">
-          <label>Confirm Password</label>
-          <div class="control">
-            <input class="input is-success" name="confirm-password" type="text" placeholder="retype password" value="">
-          </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox" id="agreeTerms" name="agree" value="agreement">
-              I agree to the 
-<!--Link to terms and conditions page here. It needs to be in new window with no back button in order to keep dialog box with input open while user checks ts and cs-->
-              <a id="terms-link">terms and conditions </a>
-            </label>
-            
+
+              <div class="field">
+                <label class="label">Last Name</label>
+                <div class="control">
+                  <input class="input is-success" type="text" placeholder="e.g. Smith" value="">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input is-success" type="email" placeholder="email address" value="">
+                </div>
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <div class="control">
+                  <input class="input is-success" type="text" placeholder="type password max. 8 characters" value="">
+                </div>
+              </div>
+              <div class="field">
+                <label>Confirm Password</label>
+                <div class="control">
+                  <input class="input is-success" type="text" placeholder="retype password" value="">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    I agree to the 
+      <!--Link to terms and conditions page here. It needs to be in new window with no back button in order to keep dialog box with input open while user checks ts and cs-->
+                    <a id="terms-link">terms and conditions </a>
+                  </label>
+                  
+                </div>
+              </div>
+            </section>
+            <footer class="modal-class-foot">
+              <button class="button is-success">Sign up</button>
+              <button class="button modal-cancel">Cancel</button>
+            </footer>
           </div>
         </div>
-      </section>
-      <footer class="modal-class-foot">
-        <button class="button is-success" id="signup-button">Sign up</button>
-        <button class="button modal-cancel">Cancel</button>
-      </footer>
-    </div>
-  </div>
-</header>
+      <!-- Add title -->
+        <div class="hero-body">
+          <div class="is-overlay has-text-centered" style="top: 400px">
+              <h1 class="title is-1 has-text-weight-bold has-text-white">Support Your <span class="has-text-success">Local</span></h1>
+              <br>
+              <h2 class="subtitle is-4 has-text-white">From local grocers to you</h2>
+          </div>
+      </div>
 
+    </header>
+   
+    <main>
+<!--add map section-->
+      <div style="display: none">
+        <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" />
+    
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" />
 
-<!----This can be for the hero wrapper-->
-<section class="#">
+        <div id="mode-selector" class="controls">
+          <input type="radio" name="type" id="changemode-walking" checked="checked" />
+          <label for="changemode-walking">Walking</label>
 
-  
-</section>
-<body>
-  <div style="display: none">
-    <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" />
+          <input type="radio" name="type" id="changemode-transit" />
+          <label for="changemode-transit">Transit</label>
 
-    <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location" />
+          <input type="radio" name="type" id="changemode-driving" />
+          <label for="changemode-driving">Driving</label>
+        </div>
+      </div>
 
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" checked="checked" />
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit" />
-      <label for="changemode-transit">Transit</label>
-
-      <input type="radio" name="type" id="changemode-driving" />
-      <label for="changemode-driving">Driving</label>
-    </div>
-  </div>
-
-  <div id="map"></div>
-  <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA&callback=initMap&libraries=places&v=weekly"
-      defer
-    ></script>
-     <main>
+      <div id="map" style="width:100%; height:400px"></div>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA&callback=initMap&libraries=places&v=weekly"
+        defer
+      ></script>
+  <!--end map section-->
+     
+  <!-- Ben's original sections as placeholders for sections to come-->
       <hero class="#">  
         
       </hero>
@@ -164,39 +166,32 @@
             Lorem ipsum dolor sit amet consectetur adipisicing </p>
         </aside>
 
-     <aside>
-      <!--Left side of web page-->
-      <h2>Recipies</h2>
-      <img src="#" alt="#" width="#" height="#"> 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum minus sint, iure repellendus sapiente mollitia. Corporis exercitationem ad consequatur dolores, quasi molestias provident quas? Pariatur quaerat excepturi qui quia ullam!</p>
-     </aside>
-      <div>
-        <section>
-          <!--This is where the searched content will be displayed-->
-          <img src="#" alt="#" width="#" height="#">  
-          <h2>Grocery list</h2> 
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>  
-        </section>
-          
+       <aside>
+        <!--Left side of web page-->
+        <h2>Recipes</h2>
+        <img src="#" alt="#" width="#" height="#"> 
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum minus sint, iure repellendus sapiente mollitia. Corporis exercitationem ad consequatur dolores, quasi molestias provident quas? Pariatur quaerat excepturi qui quia ullam!</p>
+       </aside>
+        <div>
+          <section>
+            <!--This is where the searched content will be displayed-->
+            <img src="#" alt="#" width="#" height="#">  
+            <h2>Grocery list</h2> 
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>  
+          </section>
+
+        </div>
       </div>
-   
+
     </main>
+  
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./assets/google-maps.js"></script>
+    <script src="./assets/script.js"></script>
 
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="./assets/google-maps.js"></script>
-  <script src="./assets/script.js"></script>
-  <script src="./assets/log-in.js"></script>
-
-
-</body>
-<footer>
-<h3>contact us. Please. </h3>
-
-</footer>
-
+  </body>
 
 </html>
