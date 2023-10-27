@@ -48,25 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
             var agreeCheckbox = document.querySelector('#agree-terms');
 
             if(!firstName || !lastName || !email || !password || !confirm || !agreeCheckbox.checked) {
-                console.log('Please check that all fields are complete.');
+            
+                var anchorMsgAtEnd = $("#checkbox-label");
+                var checkInputMsg = $('<p></p>');
+                checkInputMsg.addClass ('has-text-success');
+                checkInputMsg.text("Something's missing in the form, can you add it?");
+                anchorMsgAtEnd.append(checkInputMsg);
                 return;
+                
             } else if (confirmPassword.value !== passwordInput.value) {
                 var anchorMsg = $("#confirm-password-label");
-                
                 var passwordMsg = $('<p></p>');
                 passwordMsg.addClass('has-text-success');
-                passwordMsg.text('Passwords do not match.');
+                passwordMsg.text("Oops. The passwords don't match yet.");
                 anchorMsg.append(passwordMsg);
-
-                //disable Signup button
+                //empty password fields only
+                $(passwordInput).val('');
+                $(confirmPassword).val('');
+              
+                //add disable Signup button
                 return;
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
                 var userCredentials = localStorage.getItem("user");
                 console.log(JSON.parse(userCredentials), "userCredentials");
+
             }
 
-
+            //
 
 
 
