@@ -70,10 +70,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
-                var userCredentials = localStorage.getItem("user");
-                console.log(JSON.parse(userCredentials), "userCredentials");
+                function clearInputEls() {
+                    //Working on this: var signupBody = document.querySelector("#signup-body");
+
+                   //Working on this: $(signupBody).children.children.children("input.input").text("");
+
+                    $(firstNameInput).val('');
+                    $(lastNameInput).val('');
+                    $(emailInput).val('');
+                    $(passwordInput).val('');
+                    $(confirmPassword).val('');    
+                    $(agreeCheckbox).prop('checked', false);
+                };
+                clearInputEls();
+                $(signupModalEl).hide();
+
+                var logInPrompt = $('<h3 pt-5></h3>');
+                var anchorSubtitle = $("#subtitle");
+
+                logInPrompt.addClass('has-text-white has-background-black');
+                $(logInPrompt).css({"line-height": "2rem", "font-style": "oblique"});
+                logInPrompt.text("Welcome to the Support Your Local Community! We're pleased your here. Please log in to start connecting!");
+                anchorSubtitle.append(logInPrompt);
 
             }
+                
+
+            
+
 
             //
 
@@ -105,23 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             //     };
             // };
 
-            //confirm password must match password in order to progress. 
-            
-            //Sign up button only available when all fields are full and when checkbox ticked.
-            //Added these classes to index.html <input type="checkbox" id="agreeTerms" name="agree" value="agreement">
-
-           
-                      
-
-            //SUCCESSFUL CODE
-            // if (!agreeCheckbox.checked || confirmPassword.value !== passwordInput.value) {
-            //     console.log("Please check you have filled in the form correctly.");
-            // } else {
-            //            localStorage.setItem("user", JSON.stringify(user));
-            //             var userCredentials = localStorage.getItem("user");
-            //             console.log(JSON.parse(userCredentials), "userCredentials");  
-            // }
-
             // // Clear input fields
             // $('input[type="text"]').val('');
             // $('input[type="email"]').val('');
@@ -140,3 +147,6 @@ $(document).ready(function() {
     });
 });
 
+//  This piece to append details from local storage
+//               var userCredentials = localStorage.getItem("user");
+// console.log(JSON.parse(userCredentials), "userCredentials");
