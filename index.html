@@ -13,55 +13,60 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
-  <body>
+  <body has-navbar-fixed-top>
     <header>
-          <section class="hero is-fullheight">
-            <div class="hero-head">
-                <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                    <!--navbar-burger must appear as last child of navbar-brand in order to function-->
-
-                        <div class="column left navbar-brand ">
-                            <a class="navbar-item has-text-white height-override " id="logo-nav">
-                              <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
-                            </a>
-                            <!--navbar-burger appears for touch screen only-->
-                            <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                            </a>
-                        </div>
-                        <!--change background of menu in navburger-->
-                        <div id="navbarItemsMenu" class="column center desktop navbar-menu transparent-background">
-                         <div class="navbar-start">
-                            <a class="navbar-item has-text-white" id="home-nav">Home</a>
-                            <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
-                   
-                            <a class="navbar-item has-text-white" id="about-nav">About us</a>  
-                            <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
-                             
-                          </div>
-                        </div>
-                  
-                        <div class="column right desktop navbar-end">
-                           <div class="navbar-item">
-                               <div class="buttons">
-                                    <a class="button is-black js-modal-trigger has-text-white" data-target="modal-sign-up">
-                                        <strong>Sign up</strong>
-                                    </a>
-                                    <a class="button is-light has-text-success">
-                                    Log in
-                                    </a>
-                               </div>
-                           </div>
-                        </div>
-                      </div>
-                </div>
-            </div>        
-        </section>
+      
   
-      <!--html for the modal triggered by sign-up btn-->     
-        <div id="modal-sign-up" class="modal">
+
+      
+      <!-- Hero holds title -->
+      <hero class="hero is-fullheight-with-navbar">
+        <div class="hero-head heading has-text-weight-bold is-size-7">
+          <nav class="navbar is-fixed-top ">
+            <div class="navbar-brand">
+                <a class="navbar-item has-text-black height-override" id="logo-nav">
+                  <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
+                </a>
+                <!--place holder for username to appear when logged in-->
+                <div class="navbar-item" id=""></div>
+                <!--navbar-burger must be last child-->
+                <!--navbar-burger appears for touch screen only-->
+                <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <!--change background of menu to transparent in nav-burger-->
+            <div id="navbar-items-menu" class="navbar-menu transparent-background">
+              <div class="navbar-start">
+                 <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                 <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+        
+                 <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                 <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+              </div>
+    
+              <div class="navbar-end">
+              
+                    <div class="buttons button-margins">
+                        <a class="button  is-black js-modal-trigger has-text-white" data-target="modal-sign-up">
+                          <strong>Sign up</strong>
+                        </a>
+                    </div>
+                    <div class="buttons button-margins">
+                        <a class="button  is-light has-text-success">
+                          <strong>Log in</strong>
+                        </a>
+                    </div>
+                    <!--empty div disables styling given to 'last element in nav bar' -->
+                    <div></div>
+                </div>
+              </div>
+            </div>    
+          </nav>
+                <!--html for the modal triggered by sign-up btn-->     
+        <section id="modal-sign-up" class="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
             <header class="modal-card-head">
@@ -116,15 +121,18 @@
               <button class="button modal-cancel">Cancel</button>
             </footer>
           </div>
-        </div>
-      <!-- Add title -->
+        </section>
+        <!--note end of hero-head-->
+        </div> 
+
         <div class="hero-body">
           <div class="is-overlay has-text-centered" style="top: 400px">
               <h1 class="title is-1 has-text-weight-bold has-text-white">Support Your <span class="has-text-success">Local</span></h1>
               <br>
               <h2 class="subtitle is-4 has-text-white">From local grocers to you</h2>
           </div>
-      </div>
+        </div>  
+      </hero>
 
     </header>
    
