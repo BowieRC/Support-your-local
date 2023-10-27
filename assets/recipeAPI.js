@@ -462,9 +462,10 @@ function styling(cData) {
       modalCardBodyEl.attr("class", "modal-card-body");
       // content 
         methodColumnsEl.attr("class", "columns");
-        methodImageColumnEl.attr("class", "column image is-flex is-justify-content-space-evenly");
+        methodImageColumnEl.attr("class", "column image is-flex is-justify-content-space-evenly is-flex-wrap-wrap is-flex-direction-column");
         methodImageEl.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
         methodImageContentEl.attr("class", "content column");
+        methodImageContentEl.attr("style", "min-width: 300px;");
         methodContentEl.attr("class", "content");
         methodContentEl.text(selectedMeal.strInstructions);
 
@@ -584,15 +585,18 @@ function styling(cData) {
         }
         console.log(shoppingList);
 
-        localStorage.setItem("ingredients", JSON.stringify(shoppingList));
+        // localStorage.setItem("ingredients", JSON.stringify(shoppingList));
       
       });
   
       modalCardFootCancelEl.on('click', () => {
         modalEl.remove();
+        stringIngredientObject = [];
       }) 
       modalCardCloseEl.on('click', () => {
         modalEl.remove();
+        stringIngredientObject = [];
+
       }) 
 
       function addIngToObj(){
