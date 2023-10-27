@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // var signupModalEl = $("#modal-sign-up");
     var signupModalEl = document.getElementById('modal-sign-up');
-    console.log(signupModalEl, 'signupModalEl');
     var signUpButton = document.querySelector("#signup-button");
 
     
@@ -52,7 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Please check that all fields are complete.');
                 return;
             } else if (confirmPassword.value !== passwordInput.value) {
-                console.log('Passwords do not match');
+                var anchorMsg = $("#confirm-password-label");
+                
+                var passwordMsg = $('<p></p>');
+                passwordMsg.addClass('has-text-success');
+                passwordMsg.text('Passwords do not match.');
+                anchorMsg.append(passwordMsg);
+
+                //disable Signup button
                 return;
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
