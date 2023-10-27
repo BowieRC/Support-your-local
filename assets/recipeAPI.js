@@ -360,7 +360,7 @@ function loading(){
   styling(currentData);
 }
 
-    
+
 
 $("body").on("load", loading());
 
@@ -428,13 +428,78 @@ function styling(cData) {
       } 
 
     
-      var displayMealContainer = $("<section>");
-      var closeButton = $("<button>");
-      var displayMealTitle = $("<h1>");
-      var displayMealImage = $("<div>");
-      var displayMealIngredients = $("<div>");
-      var displayMealMethod = $("<p>");
-      var buttonAddToList = $("<button>")
+      // var displayMealContainer = $("<section>");
+      // var closeButton = $("<button>");
+      // var displayMealTitle = $("<h1>");
+      // var displayMealImage = $("<div>");
+      // var displayMealIngredients = $("<div>");
+      // var displayMealMethod = $("<p>");
+      // var buttonAddToList = $("<button>")
+
+      var modalEl = $("<div>");
+      var modalBackgroundEl = $("<div>");
+      var modalCardEl = $("<div>");
+      var modalCardHeadEl = $("<header>");
+      var modalCardTitleEl = $("<p>");
+      var modalCardCloseEl = $("<button>");
+      var modalCardBodyEl = $("<section>");
+      //content
+        var methodColumnsEl = $("<div>");
+        var methodImageColumnEl = $("<figure>");
+        var methodImageEl = $("<img>");
+        var methodImageContentEl = $("<p>");
+        var methodContentEl = $("<p>");
+      var modalCardFootEl = $("<footer>");
+      var modalCardFootSuccessEl = $("<button>");
+      var modalCardFootCancelEl = $("<button>");
+
+      modalEl.attr("class", "modal is-active");
+      modalBackgroundEl.attr("class", "modal-background");
+      modalCardEl.attr("class", "modal-card");
+      modalCardHeadEl.attr("class", "modal-card-head");
+      modalCardTitleEl.attr("class", "modal-card-title");
+      modalCardCloseEl.attr("class", "delete");
+      modalCardBodyEl.attr("class", "modal-card-body");
+      // content 
+        methodColumnsEl.attr("class", "columns");
+        methodImageColumnEl.attr("class", "column image is-flex is-justify-content-space-evenly");
+        methodImageEl.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
+        methodImageContentEl.attr("class", "content column");
+        methodContentEl.attr("class", "content");
+        methodContentEl.text(selectedMeal.strInstructions);
+
+      modalCardFootEl.attr("class", "modal-card-foot");
+      modalCardFootSuccessEl.attr("class", "button is-success");
+      modalCardFootSuccessEl.attr("id", "btn-addList");
+      modalCardFootSuccessEl.text("Save Ingredients")
+      modalCardFootCancelEl.attr("class", "button is-danger");
+      modalCardFootCancelEl.attr("id", "close");
+      modalCardFootCancelEl.text("Close");
+
+      modalCardTitleEl.text(selectedMeal.strMeal);
+
+      modalEl.append(modalBackgroundEl);
+      modalEl.append(modalCardEl);
+      modalCardEl.append(modalCardHeadEl);
+      modalCardHeadEl.append(modalCardTitleEl);
+      modalCardHeadEl.append(modalCardCloseEl);
+      modalCardEl.append(modalCardBodyEl);
+      // Content
+      modalCardBodyEl.append(methodColumnsEl);
+      methodColumnsEl.append(methodImageColumnEl);
+      methodImageColumnEl.append(methodImageEl);
+      methodImageColumnEl.append(methodImageContentEl);
+      modalCardBodyEl.append(methodContentEl);
+
+      modalCardEl.append(modalCardFootEl);
+      modalCardFootEl.append(modalCardFootSuccessEl);
+      modalCardFootEl.append(modalCardFootCancelEl);
+
+      $("#container").append(modalEl);
+
+
+
+
 
     var stringIngredientName = [
       data.meals[0].strIngredient1, 
@@ -485,26 +550,26 @@ function styling(cData) {
     addIngToObj();
     setToHistory();
 
-    displayMealContainer.attr("id", "display-container");
-        closeButton.attr("id", "btn-close");
-        closeButton.text("Close");
-          displayMealTitle.text(selectedMeal.strMeal);
-         displayMealImage.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
-        displayMealMethod.text(selectedMeal.strInstructions);
-        displayMealIngredients.text()
-        buttonAddToList.attr("id", "btn-addList");
-        buttonAddToList.text("Add to shopping list")
+    // displayMealContainer.attr("id", "display-container");
+        // closeButton.attr("id", "btn-close");
+        // closeButton.text("Close");
+          // displayMealTitle.text(selectedMeal.strMeal);
+        //  displayMealImage.attr("style", "background-image: url(" + selectedMeal.strMealThumb + ");width: 300px; height: 300px; background-size: cover; background-location: center");
+        // displayMealMethod.text(selectedMeal.strInstructions);
+        // displayMealIngredients.text()
+        // buttonAddToList.attr("id", "btn-addList");
+        // buttonAddToList.text("Add to shopping list")
   
         
     
     
-        $("#container").append(displayMealContainer);
-        displayMealContainer.append(closeButton);
-        displayMealContainer.append(displayMealTitle);
-        displayMealContainer.append(displayMealImage);
-        displayMealContainer.append(displayMealMethod);
-        displayMealContainer.append(displayMealIngredients);
-        displayMealContainer.append(buttonAddToList);
+    //     $("#container").append(displayMealContainer);
+    //     displayMealContainer.append(closeButton);
+    //     displayMealContainer.append(displayMealTitle);
+    //     displayMealContainer.append(displayMealImage);
+    //     displayMealContainer.append(displayMealMethod);
+    //     displayMealContainer.append(displayMealIngredients);
+    //     displayMealContainer.append(buttonAddToList);
   
       $("#sortByContainer").addClass("hidden");
       $("#filterOptions").addClass("hidden");
@@ -523,11 +588,11 @@ function styling(cData) {
       
       });
   
-      closeButton.on('click', () => {
-        displayMealContainer.remove();
-        $("#sortByContainer").removeClass("hidden");
-        $("#filterOptions").removeClass("hidden");
-        $("#sort-container").removeClass("hidden");
+      modalCardFootCancelEl.on('click', () => {
+        modalEl.remove();
+      }) 
+      modalCardCloseEl.on('click', () => {
+        modalEl.remove();
       }) 
 
       function addIngToObj(){
@@ -542,7 +607,7 @@ function styling(cData) {
         for(i = 0; i<stringIngredientObject.length; i++){
           var mealIngredient = $("<li>");
           mealIngredient.text(stringIngredientObject[i].amount + " " + stringIngredientObject[i].name);
-          displayMealIngredients.append(mealIngredient);
+          methodImageContentEl.append(mealIngredient);
       }
       }
 
