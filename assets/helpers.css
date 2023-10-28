@@ -29,3 +29,12 @@
 .extended-margin-for-message {
     margin-bottom: 16rem!important;
 }
+/*add margin to top of buttons*/
+.button-margins {
+    margin-top: 0.5rem;
+    margin-bottom: 0rem!important;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
+
