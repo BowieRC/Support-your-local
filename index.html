@@ -13,54 +13,74 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
 
-  <body>
+  <body has-navbar-fixed-top>
     <header>
-          <section class="hero is-fullheight">
-            <div class="hero-head">
-                <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                    <!--navbar-burger must appear as last child of navbar-brand in order to function-->
-
-                        <div class="column left navbar-brand ">
-                            <a class="navbar-item has-text-white height-override " id="logo-nav">
-                              <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
-                            </a>
-                            <!--navbar-burger appears for touch screen only-->
-                            <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarItemsMenu">
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                                <span aria-hidden="true"></span>
-                            </a>
-                        </div>
-                        <!--change background of menu in navburger-->
-                        <div id="navbarItemsMenu" class="column center desktop navbar-menu transparent-background">
-                         <div class="navbar-start">
-                            <a class="navbar-item has-text-white" id="home-nav">Home</a>
-                            <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
-                   
-                            <a class="navbar-item has-text-white" id="about-nav">About us</a>  
-                            <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
-                             
-                          </div>
-                        </div>
-                  
-                        <div class="column right desktop navbar-end">
-                           <div class="navbar-item">
-                               <div class="buttons">
-                                    <a class="button is-black js-modal-trigger has-text-white" data-target="modal-sign-up">
-                                        <strong>Sign up</strong>
-                                    </a>
-                                    <a class="button is-light has-text-success">
-                                    Log in
-                                    </a>
-                               </div>
-                           </div>
-                        </div>
-                      </div>
+           
+      <!-- Hero holds title -->
+      <hero class="hero is-fullheight-with-navbar">
+        <div class="hero-head heading has-text-weight-bold is-size-7">
+          <nav class="navbar is-fixed-top ">
+            <div class="navbar-brand">
+                <a class="navbar-item has-text-black height-override" id="logo-nav">
+                  <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
+                </a>
+                <!--place holder for username to appear when logged in-->
+                <div class="navbar-item has-text-success" id="user-placeholder"></div>
+                <!--navbar-burger must be last child-->
+                <!--navbar-burger appears for touch screen only-->
+                <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <!--change background of menu to transparent in nav-burger-->
+            <div id="navbar-items-menu" class="navbar-menu transparent-background">
+              <div class="navbar-start">
+                 <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                 <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+        
+                 <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                 <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+              </div>
+    
+              <div class="navbar-end">
+              
+                    <div class="buttons button-margins">
+                        <a id="root-signup-button" class="button  is-black js-code-trigger has-text-white" data-target="modal-sign-up">
+                          <strong>Sign up</strong>
+                        </a>
+                    </div>
+                    <div class="buttons button-margins">
+                        <a id="root-login-button" class="button js-code-trigger is-light has-text-success" data-target="modal-log-in">
+                          <strong>Log in</strong>
+                        </a>
+                    </div>
+                    <div class="buttons button-margins">
+                        <a id="root-logout-button" class="button js-code-trigger is-black has-text-white is-hidden" data-target="modal-log-out">
+                          <strong>Log out</strong>
+                        </a>
+                    </div>
+                    <!--empty div disables styling given to 'last element in nav bar' -->
+                    <div></div>
                 </div>
-            </div>        
-        </section>
-  
-      <!--html for the modal triggered by sign-up btn-->     
+              </div>
+            </div>    
+          </nav>
+
+      <!-- Add title -->
+        <div class="hero-body">
+          <div class="is-overlay has-text-centered" style="top: 400px">
+              <h1 class="title is-1 has-text-weight-bold has-text-white">Support Your <span class="has-text-success">Local</span></h1>
+              <br>
+              <h2 class="subtitle is-4 has-text-white extended-margin-for-message">From local grocers to you</h2>
+              <br>
+  <!--space for appending welcome message on sign up-->
+              <div id="subtitle">         
+              </div>
+          </div>
+        </div>  
+<!--html for the modal triggered by sign-up btn-->     
         <div id="modal-sign-up" class="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -68,41 +88,42 @@
               <p class="modal-card-title">Sign Up</p>
               <button class="delete" aria-label="close"></button>
             </header>
-            <section class="modal-card-body">
+            <section id="signup-body" class="modal-card-body">
               <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
-                  <input class="input is-success" type="text" placeholder="e.g. John" value="">
+                  <input class="input is-success" name="first-name" type="text" placeholder="e.g. John" value="">
                 </div>
               </div>
+
               <div class="field">
                 <label class="label">Last Name</label>
                 <div class="control">
-                  <input class="input is-success" type="text" placeholder="e.g. Smith" value="">
+                  <input class="input is-success" name="last-name" type="text" placeholder="e.g. Smith" value="">
                 </div>
               </div>
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input class="input is-success" type="email" placeholder="email address" value="">
+                  <input class="input is-success" name="email" type="email" placeholder="email address" value="">
                 </div>
               </div>
               <div class="field">
-                <label>Password</label>
+                <label class="label">Password</label>
                 <div class="control">
-                  <input class="input is-success" type="text" placeholder="type password max. 8 characters" value="">
+                  <input class="input is-success" name="password" type="text" placeholder="type a password" value="">
                 </div>
               </div>
               <div class="field">
-                <label>Confirm Password</label>
+                <label id="confirm-password-label" class="label">Confirm Password</label>
                 <div class="control">
-                  <input class="input is-success" type="text" placeholder="retype password" value="">
+                  <input class="input is-success" name="confirm-password" type="text" placeholder="retype password" value="">
                 </div>
               </div>
               <div class="field">
                 <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label class="checkbox" id="checkbox-label">
+                    <input id="agree-terms" type="checkbox">
                     I agree to the 
       <!--Link to terms and conditions page here. It needs to be in new window with no back button in order to keep dialog box with input open while user checks ts and cs-->
                     <a id="terms-link">terms and conditions </a>
@@ -112,19 +133,74 @@
               </div>
             </section>
             <footer class="modal-class-foot">
-              <button class="button is-success">Sign up</button>
+              <button id="signup-button" class="button is-success">Sign up</button>
               <button class="button modal-cancel">Cancel</button>
             </footer>
           </div>
         </div>
-      <!-- Add title -->
-        <div class="hero-body">
-          <div class="is-overlay has-text-centered" style="top: 400px">
-              <h1 class="title is-1 has-text-weight-bold has-text-white">Support Your <span class="has-text-success">Local</span></h1>
-              <br>  
-              <h2 class="subtitle is-4 has-text-white">From local grocers to you</h2>
+<!-- end sign up modal code -->
+
+<!--html for the login-trigger modal-->     
+        <div id="modal-log-in" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Log in</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section id="login-body" class="modal-card-body">
+              <!--email, password and remember me checkbox-->
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input is-success" name="email-login" type="email" placeholder="email address" value="">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input class="input is-success" name="password-login" type="text" placeholder="type password max. 8 characters" value="">
+                </div>
+              </div>
+              <!--Remember me will link to localStorage later-->
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox" id="remember-me">
+                    <input  type="checkbox">
+                    Remember me
+                  </label>
+                        
+                </div>
+              </div>
+            </section>
+            <footer class="modal-class-foot">
+              <button id= "login-button" class="button is-success">Log in</button>
+              <button class="button modal-cancel">Cancel</button>
+            </footer>
           </div>
-      </div>
+        </div>
+  <!--end login trigger modal-->
+
+  <!--logout modal code-->
+        <div id="modal-log-out" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Log out</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section id="logout-body" class="modal-card-body">
+              <div>Thanks for using our app!</div>
+              <div>We hope you keep enjoying your food shopping!</div>
+            </section>
+            <footer class="modal-class-foot">
+              <button id="see-ya-button" class="button is-success">See-ya next time!</button>
+              <button class="button modal-cancel">Cancel</button>
+            </footer>
+        </div>
+  <!--end of logout modal code-->
+
+      </hero>
 
     </header>
    
@@ -183,13 +259,14 @@
 
         </div>
       </div>
-  
+
     </main>
   
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./assets/google-maps.js"></script>
     <script src="./assets/script.js"></script>
+    <script src="./assets/log-in.js"></script>
 
   </body>
 
