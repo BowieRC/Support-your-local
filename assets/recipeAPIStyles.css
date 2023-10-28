@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 .sortWrapper{
     border: 1px solid black;
     width: 300px;
