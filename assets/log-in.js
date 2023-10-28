@@ -169,6 +169,3 @@ $(document).ready(function() {
     });
 });
 
-//  This piece to append details from local storage
-//               var userCredentials = localStorage.getItem("user");
-// console.log(JSON.parse(userCredentials), "userCredentials");
