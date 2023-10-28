@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 .sortWrapper{
     border: 1px solid black;
     width: 300px;
@@ -10,14 +14,6 @@
     transform: scale(1.2);  
     z-index: -1;
 } */
-
-.container{
-  
-}
-
-.sort-wrapper{
-
-}
   
   .imageWrapper{
     border: 1px solid black;
