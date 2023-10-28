@@ -25,7 +25,7 @@
                   <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
                 </a>
                 <!--place holder for username to appear when logged in-->
-                <div class="navbar-item" id=""></div>
+                <div class="navbar-item has-text-success" id="user-placeholder"></div>
                 <!--navbar-burger must be last child-->
                 <!--navbar-burger appears for touch screen only-->
                 <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div class="buttons button-margins">
-                        <a class="button js-code-trigger is-light has-text-success" data-target="modal-log-in">
+                        <a id="root-login-button" class="button js-code-trigger is-light has-text-success" data-target="modal-log-in">
                           <strong>Log in</strong>
                         </a>
                     </div>
@@ -155,7 +155,7 @@
                   <input class="input is-success" name="password-login" type="text" placeholder="type password max. 8 characters" value="">
                 </div>
               </div>
-              <!--Remember me will link to localStorage next-->
+              <!--Remember me will link to localStorage later-->
               <div class="field">
                 <div class="control">
                   <label class="checkbox" id="remember-me">

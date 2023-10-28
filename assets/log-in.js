@@ -72,9 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
                 function clearInputEls() {
-                    //Working on this: var signupBody = document.querySelector("#signup-body");
-
-                   //Working on this: $(signupBody).children.children.children("input.input").text("");
 
                     $(firstNameInput).val('');
                     $(lastNameInput).val('');
@@ -126,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     var loginButton = document.querySelector("#login-button");
 
+    var loginModal = document.querySelector("#modal-log-in");
+
         loginButton.addEventListener("click", function(event) {
             event.preventDefault;
             console.log("log in");
@@ -141,34 +140,52 @@ document.addEventListener('DOMContentLoaded', () => {
             var emailLogin = $(emailLoginEl).val();
             var passwordLogin = $(passwordLoginEl).val();
 
+            var rememberMeEl = $("#remember-me");
+
                     
             function checkPasswordMatch() {
                     if (!emailLogin || !passwordLogin) {
-                        var loginAnchorMsgAtEnd = $("#remember-me");
                         var loginCheckInputMsg = $('<p></p>');
                         loginCheckInputMsg.addClass ('has-text-success');
                         loginCheckInputMsg.text("Something's missing in the form, can you add it?");
-                        loginAnchorMsgAtEnd.append(loginCheckInputMsg);
+                        rememberMeEl.append(loginCheckInputMsg);
                         //clear fields
                         $(emailLoginEl).val()=("");
                         $(passwordLoginEl).val()=("");
                         return;
 
                     } else if (emailLogin !== userData.email || passwordLogin !== userData.email) {
-                        var matchAlertAnchor = $("#remember-me");
                         var matchAlertMsg = $('<p></p>');
                         matchAlertMsg.addClass('has-text-success');
                         matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
-                        matchAlertAnchor.append(matchAlertMsg);
+                        rememberMeEl.append(matchAlertMsg);
                         //clear fields
                         $(emailLoginEl).val()=("");
                         $(passwordLoginEl).val()=("");
                     } else if (emailLogin === userData.email && passwordLogin === userData.password) {
                         console.log('logged in');
+                        
                     };          
 
-            
             };
+
+            $(loginModal).hide();
+            $("#root-login-button").css({"visibility": "hidden"});
+            $("#root-signup-button").css({"visibility": "hidden"});
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+            var loggedInUserEl = document.querySelector("#user-placeholder");       
+
+            loggedInUserEl.textContent = "Logged in: " + userData.firstName;
+            
+
+
+
+
+
+
+
                 
         });
 
