@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 $("root-logout-button").addClass("js-code-trigger");
                 $(".navbar-burger").toggleClass("is-active");
                 $(".navbar-menu").toggleClass("is-active");
+                $("#subtitle").remove();
     
                 var loggedInUserEl = document.querySelector("#user-placeholder");       
     
