@@ -1,26 +1,9 @@
-
-
-
-
-//run this code to hold other code for when modal is showing
-
 document.addEventListener('DOMContentLoaded', () => {
     
     // var signupModalEl = $("#modal-sign-up");
     var signupModalEl = document.getElementById('modal-sign-up');
     //This is signup button within modal, NOT the signup button visible on the landing page. See script.js js-code-trigger for that.
     var signUpButton = document.querySelector("#signup-button");
-
-    
-
-   
-    //successful code
-    // if ($("#modal-sign-up").hasClass("is-active")) {
-    //     console.log('sign up is active');
-
-    // } else {
-    //     console.log('it is not open');
-    // }
     
         signUpButton.addEventListener("click", function(event) {
             event.preventDefault;
@@ -104,14 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 logInPrompt2.text("Please log in to change your food shopping experience.")
                 anchorSubtitle.append(logInPrompt1);
                 anchorSubtitle.append(logInPrompt2);
-
-            }
-                
+            }               
         });
     
-
-
     });
+
 //Access for reading terms and conditions in modal
 $(document).ready(function() {
     $("#terms-link").click(function() {
@@ -122,7 +102,6 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', () => {
     
     var loginButton = document.querySelector("#login-button");
-
     var loginModal = document.querySelector("#modal-log-in");
 
         loginButton.addEventListener("click", function(event) {
@@ -146,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(passwordLogin);
 
             var rememberMeEl = $("#remember-me");
-
-                    
+           
             function checkPasswordMatch() {
                     if (!emailLogin || !passwordLogin) {
                         var loginCheckInputMsg = $('<p></p>');
@@ -174,23 +152,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         return true;
                         
                     };          
-
             };
 
             if (checkPasswordMatch()) {
                 $(loginModal).hide();
                 $("#root-login-button").css({"visibility": "hidden"});
                 $("#root-signup-button").css({"visibility": "hidden"});
+                $("#root-logout-button").toggleClass("is-hidden");
+                $("root-logout-button").addClass("js-code-trigger");
                 $(".navbar-burger").toggleClass("is-active");
                 $(".navbar-menu").toggleClass("is-active");
     
                 var loggedInUserEl = document.querySelector("#user-placeholder");       
     
                 loggedInUserEl.textContent = "Logged in: " + userData.firstName;
-            }                 
-        });
-
-
-            
-    
+            }  
+        }); 
 });
+
+
+

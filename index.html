@@ -56,6 +56,11 @@
                           <strong>Log in</strong>
                         </a>
                     </div>
+                    <div class="buttons button-margins">
+                        <a id="root-logout-button" class="button js-code-trigger is-black has-text-white is-hidden" data-target="modal-log-out">
+                          <strong>Log out</strong>
+                        </a>
+                    </div>
                     <!--empty div disables styling given to 'last element in nav bar' -->
                     <div></div>
                 </div>
@@ -74,7 +79,7 @@
               </div>
           </div>
         </div>  
-                <!--html for the modal triggered by sign-up btn-->     
+<!--html for the modal triggered by sign-up btn-->     
         <div id="modal-sign-up" class="modal">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -132,6 +137,7 @@
             </footer>
           </div>
         </div>
+<!-- end sign up modal code -->
 
 <!--html for the login-trigger modal-->     
         <div id="modal-log-in" class="modal">
@@ -172,6 +178,26 @@
             </footer>
           </div>
         </div>
+  <!--end login trigger modal-->
+
+  <!--logout modal code-->
+        <div id="modal-log-out" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Log out</p>
+              <button class="delete" aria-label="close"></button>
+            </header>
+            <section id="logout-body" class="modal-card-body">
+              <div>Thanks for using our app!</div>
+              <div>We hope you keep enjoying your food shopping!</div>
+            </section>
+            <footer class="modal-class-foot">
+              <button id="see-ya-button" class="button is-success">See-ya next time!</button>
+              <button class="button modal-cancel">Cancel</button>
+            </footer>
+        </div>
+  <!--end of logout modal code-->
 
       </hero>
 
