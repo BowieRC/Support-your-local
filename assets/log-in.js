@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // var signupModalEl = $("#modal-sign-up");
     var signupModalEl = document.getElementById('modal-sign-up');
+    //This is signup button within modal, NOT the signup button visible on the landing page. See script.js js-code-trigger for that.
     var signUpButton = document.querySelector("#signup-button");
 
     
@@ -107,58 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 anchorSubtitle.append(logInPrompt1);
                 anchorSubtitle.append(logInPrompt2);
 
-
-
-                //  This piece to append details from local storage
-              
-
-
-
-
             }
                 
-
-            
-
-
-            //
-
-
-
-            // var inputRootEl = $('#signup-body');
-
-     
-            // //This returns all input fields within the signup section
-            // var inputEls = inputRootEl.children().children().children('input').val();
-            
-            // //Not working yet - this function currently writes the content of only 1 input field to the console. I want it to check whether it is empty. 
-            // //Only returning the first input field
-            // console.log(inputEls);
-            
-            //function works but the inputEls only has on field
-            // function checkInputEls() {
-            //     for (var i=0; i < inputEls.length; i++) {
-                    
-            //         console.log(inputEls.length);
-            //         console.log(inputEls[i]);
-
-            //          if (!inputEls[i]) {
-            //              console.log([i] + " is empty");
-                                
-            //         } else if (inputEls[i]) {
-            //             console.log([i] + " says " + inputEls);
-            //         }
-            //     };
-            // };
-
-            // // Clear input fields
-            // $('input[type="text"]').val('');
-            // $('input[type="email"]').val('');
-            // $('input[type="checkbox"]').prop('checked', false);
-
-
         });
-       
+    
 
 
     });
@@ -169,3 +122,57 @@ $(document).ready(function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    
+    var loginButton = document.querySelector("#login-button");
+
+        loginButton.addEventListener("click", function(event) {
+            event.preventDefault;
+            console.log("log in");
+
+
+            var emailLoginEl = document.querySelector('input[name="email-login"]');
+            var passwordLoginEl = document.querySelector('input[name="password-login"]');
+
+            //bring out userData from storage
+            var userDataStored = localStorage.getItem("user");
+            var userData = JSON.parse(userDataStored);
+
+            var emailLogin = $(emailLoginEl).val();
+            var passwordLogin = $(passwordLoginEl).val();
+
+                    
+            function checkPasswordMatch() {
+                    if (!emailLogin || !passwordLogin) {
+                        var loginAnchorMsgAtEnd = $("#remember-me");
+                        var loginCheckInputMsg = $('<p></p>');
+                        loginCheckInputMsg.addClass ('has-text-success');
+                        loginCheckInputMsg.text("Something's missing in the form, can you add it?");
+                        loginAnchorMsgAtEnd.append(loginCheckInputMsg);
+                        //clear fields
+                        $(emailLoginEl).val()=("");
+                        $(passwordLoginEl).val()=("");
+                        return;
+
+                    } else if (emailLogin !== userData.email || passwordLogin !== userData.email) {
+                        var matchAlertAnchor = $("#remember-me");
+                        var matchAlertMsg = $('<p></p>');
+                        matchAlertMsg.addClass('has-text-success');
+                        matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
+                        matchAlertAnchor.append(matchAlertMsg);
+                        //clear fields
+                        $(emailLoginEl).val()=("");
+                        $(passwordLoginEl).val()=("");
+                    } else if (emailLogin === userData.email && passwordLogin === userData.password) {
+                        console.log('logged in');
+                    };          
+
+            
+            };
+                
+        });
+
+
+            
+    
+});
