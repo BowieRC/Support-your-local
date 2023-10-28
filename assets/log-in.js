@@ -137,8 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
             var userDataStored = localStorage.getItem("user");
             var userData = JSON.parse(userDataStored);
 
+            console.log(userData.email);
+            console.log(userData.password);
+
             var emailLogin = $(emailLoginEl).val();
             var passwordLogin = $(passwordLoginEl).val();
+            console.log(emailLogin);
+            console.log(passwordLogin);
 
             var rememberMeEl = $("#remember-me");
 
@@ -154,39 +159,35 @@ document.addEventListener('DOMContentLoaded', () => {
                         $(passwordLoginEl).val()=("");
                         return;
 
-                    } else if (emailLogin !== userData.email || passwordLogin !== userData.email) {
+                    } else if (emailLogin === !userData.email || passwordLogin === !userData.email) {
                         var matchAlertMsg = $('<p></p>');
                         matchAlertMsg.addClass('has-text-success');
                         matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
                         rememberMeEl.append(matchAlertMsg);
                         //clear fields
-                        $(emailLoginEl).val()=("");
-                        $(passwordLoginEl).val()=("");
+                        $(emailLoginEl).val()=('');
+                        $(passwordLoginEl).val()=('');
+                        return;
+
                     } else if (emailLogin === userData.email && passwordLogin === userData.password) {
                         console.log('logged in');
+                        return true;
                         
                     };          
 
             };
 
-            $(loginModal).hide();
-            $("#root-login-button").css({"visibility": "hidden"});
-            $("#root-signup-button").css({"visibility": "hidden"});
-            $(".navbar-burger").toggleClass("is-active");
-            $(".navbar-menu").toggleClass("is-active");
-
-            var loggedInUserEl = document.querySelector("#user-placeholder");       
-
-            loggedInUserEl.textContent = "Logged in: " + userData.firstName;
-            
-
-
-
-
-
-
-
-                
+            if (checkPasswordMatch()) {
+                $(loginModal).hide();
+                $("#root-login-button").css({"visibility": "hidden"});
+                $("#root-signup-button").css({"visibility": "hidden"});
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+    
+                var loggedInUserEl = document.querySelector("#user-placeholder");       
+    
+                loggedInUserEl.textContent = "Logged in: " + userData.firstName;
+            }                 
         });
 
 
