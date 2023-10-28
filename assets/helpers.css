@@ -25,6 +25,10 @@
     background-color: transparent;
   }
 
+/*Add margin bottom on subtitle before the message for prompt log in on sign up*/
+.extended-margin-for-message {
+    margin-bottom: 16rem!important;
+}
 /*add margin to top of buttons*/
 .button-margins {
     margin-top: 0.5rem;

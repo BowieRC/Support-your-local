@@ -21,6 +21,7 @@ recipesNavEl.on('click', function () {
 homeNavEl.on('click', function() {
     location.reload();
 });
+//end event listener nav items code
 
 
 
@@ -36,8 +37,9 @@ $(document).ready(function() {
   
     });
 });
+//end nav burger toggle code
 
-  //modal code
+  //open any modal code
     document.addEventListener('DOMContentLoaded', () => {
         //Open and close modal functions
         function openModal($el) {
@@ -55,8 +57,8 @@ $(document).ready(function() {
         }
     
 
-    //Click event on buttons to open a specific modal
-        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+        //Click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-code-trigger') || []).forEach(($trigger) => {
             const modal = $trigger.dataset.target;
             const $target = document.getElementById(modal);
 
@@ -81,12 +83,18 @@ $(document).ready(function() {
             });
         });
     });
+    //end open any modal code
 
+//log out button code
+document.addEventListener('DOMContentLoaded', () => {
+    var logoutButton = document.querySelector("#see-ya-button");
 
-$(document).ready(function() {
-    $("#terms-link").click(function() {
-        window.open("ts&cs.html", "_blank");
+    logoutButton.addEventListener("click", function(event) {
+        console.log('reload about to happen');
+        location.reload();
     });
 });
+//end log out button code
+
 
 
