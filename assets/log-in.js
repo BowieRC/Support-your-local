@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 $(passwordInput).val('');
                 $(confirmPassword).val('');
               
-                //add disable Signup button
+                //disable Signup button
                 return;
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
@@ -83,15 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     $(agreeCheckbox).prop('checked', false);
                 };
                 clearInputEls();
+             
                 $(signupModalEl).hide();
+                $("#root-signup-button").css({"visibility": "hidden"});
 
-                var logInPrompt = $('<h3 pt-5></h3>');
+                var userDataStored = localStorage.getItem("user");
+                console.log(JSON.parse(userDataStored), "userDataStored")
+                var userData = JSON.parse(userDataStored);
+                console.log(userData);
+                
+                var logInPrompt1 = $('<h3></h3>');
+                var logInPrompt2 = $('<h3></h3>');
                 var anchorSubtitle = $("#subtitle");
 
-                logInPrompt.addClass('has-text-white has-background-black');
-                $(logInPrompt).css({"line-height": "2rem", "font-style": "oblique"});
-                logInPrompt.text("Welcome to the Support Your Local Community! We're pleased your here. Please log in to start connecting!");
-                anchorSubtitle.append(logInPrompt);
+                logInPrompt1.addClass('has-text-white is-text-weight-medium has-background-black');
+                $(logInPrompt1).css({"line-height": "4rem", "font-size": "1.5rem", "font-style": "oblique"});
+                logInPrompt2.addClass('has-text-success is-text-weight-medium has-background-black');
+                $(logInPrompt2).css({"line-height": "4rem", "font-size": "1.5rem", "font-style": "oblique"});
+
+
+                logInPrompt1.text("Welcome " + userData.firstName + "!");
+                logInPrompt2.text("Please log in to change your food shopping experience.")
+                anchorSubtitle.append(logInPrompt1);
+                anchorSubtitle.append(logInPrompt2);
+
+
+
+                //  This piece to append details from local storage
+              
+
+
+
 
             }
                 
