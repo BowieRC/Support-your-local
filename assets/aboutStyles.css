@@ -59,3 +59,18 @@
   span {
     color: #23d160;
   }
+
+  @media screen and (max-width: 768px) {
+    .about {
+      flex-direction: column;
+    }
+    .about img, .about-text p, .about-text h5 {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+    .about-text h1 {
+      font-size: 50px;
+      margin-bottom: 50px;
+    }
+    
+  }
