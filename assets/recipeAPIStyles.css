@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 .sortWrapper{
     border: 1px solid black;
     width: 300px;
@@ -19,9 +23,32 @@
     background-size: 300px;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: 
   }
   
   .hidden{
     display: none;
+  }
+
+  #display-container{
+    position: fixed;
+    display: inline;
+    top: calc(50% - 40vh - 15px);
+    left: calc(50% - 40vw - 15px);
+    width: 80vw;
+    height: 80vh;
+    padding: 15px;
+    
+    background-color: grey;
+    border: 15px solid black;
+    border-radius: 50px;
+
+    overflow: auto;
+  }
+
+  .btn-close{
+    
+  }
+
+  .dim{
+    opacity: 0.2;
   }
