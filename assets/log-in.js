@@ -137,14 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         $(passwordLoginEl).val()=("");
                         return;
 
-                    } else if (emailLogin === !userData.email || passwordLogin === !userData.email) {
+                    } else if (emailLogin !== userData.email || passwordLogin !== userData.email) {
                         var matchAlertMsg = $('<p></p>');
                         matchAlertMsg.addClass('has-text-success');
                         matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
                         rememberMeEl.append(matchAlertMsg);
+                        console.log("details don't match stoarge");
                         //clear fields
-                        $(emailLoginEl).val()=('');
-                        $(passwordLoginEl).val()=('');
+                        $(emailLoginEl).val('');
+                        $(passwordLoginEl).val('');
                         return;
 
                     } else if (emailLogin === userData.email && passwordLogin === userData.password) {
