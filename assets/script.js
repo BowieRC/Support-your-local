@@ -48,7 +48,7 @@ var recipesNavEl = $('#recipes-nav');
 //Event listener on nav items changes url to other page
 aboutNavEl.on('click', function () {
     document.location.assign('./about.html');
-  });
+});
 
 contactNavEl.on('click', function () {
     document.location.assign('./contact.html');
@@ -60,7 +60,7 @@ recipesNavEl.on('click', function () {
 
 //Click event causes reload
 homeNavEl.on('click', function() {
-    location.reload();
+    location.assign('./index.html');
 });
 //end event listener nav items code
 
