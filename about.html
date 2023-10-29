@@ -4,33 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="/assets/helpers.css">
+    <link rel="stylesheet" href="assets/aboutStyles.css">
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
       <!-- jQuery tag added here as it didn't work at the end of the body-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Support You Local</h1>
-        <h2>Local grocers straight to you</h2>
+  <div id="navbar-items-menu" class="navbar-menu transparent-background">
+    <div class="navbar-start">
+       <a class="navbar-item has-text-white" id="home-nav">Home</a>
+       <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
 
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <!--navbar-adjusted is a container created outside of Bulma to be unresponsive as needed-->
-            <div class="navbar-fixed-full-width">
-            
-              <a class="navbar-item">
- 
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+       <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+       <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+    </div>
+
+    <div class="navbar-end">
+    
+          <div class="buttons button-margins">
+              <a id="root-signup-button" class="button  is-black js-code-trigger has-text-white" data-target="modal-sign-up">
+                <strong>Sign up</strong>
               </a>
-
-            </div>
-
-        </nav>
-
-    </header>
-
+          </div>
+          <div class="buttons button-margins">
+              <a id="root-login-button" class="button js-code-trigger is-light has-text-success" data-target="modal-log-in">
+                <strong>Log in</strong>
+              </a>
+          </div>
+          <div class="buttons button-margins">
+              <a id="root-logout-button" class="button js-code-trigger is-black has-text-white is-hidden" data-target="modal-log-out">
+                <strong>Log out</strong>
+              </a>
+          </div>
     <!--placeholder-->
     <main>
+      <body has-navbar-fixed-top>
+        <header>
+               
+          <!-- Hero holds title -->
+          <hero class="hero is-fullheight-with-navbar">
+            <div class="hero-head heading has-text-weight-bold is-size-7">
+              <nav class="navbar is-fixed-top ">
+                <div class="navbar-brand">
+                    <a class="navbar-item has-text-black height-override" id="logo-nav">
+                      <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
+                    </a>
+                    <!--navbar-burger must be last child-->
+                    <!--navbar-burger appears for touch screen only-->
+                    <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!--change background of menu to transparent in nav-burger-->
+                <div id="navbar-items-menu" class="navbar-menu transparent-background">
+                  <div class="navbar-start">
+                     <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                     <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+            
+                     <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                     <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                  </div>
+        
+                  <div class="navbar-end">
+                        <!--place holder for username to appear when logged in-->
+                        <div class="navbar-item has-text-success" id="user-placeholder"></div>                    
+                        <div class="buttons button-margins">
+                            <a id="root-signup-button" class="button  is-black js-code-trigger has-text-white" data-target="modal-sign-up">
+                              <strong>Sign up</strong>
+                            </a>
+                        </div>
+                        <div class="buttons button-margins">
+                            <a id="root-login-button" class="button js-code-trigger is-light has-text-success" data-target="modal-log-in">
+                              <strong>Log in</strong>
+                            </a>
+                        </div>
+                        <div class="buttons button-margins">
+                            <a id="root-logout-button" class="button js-code-trigger is-black has-text-white is-hidden" data-target="modal-log-out">
+                              <strong>Log out</strong>
+                            </a>
+                        </div>
+                        <!--empty div disables styling given to 'last element in nav bar' -->
+                        <div></div>
+                    </div>
+                  </div>
+                </div>    
+              </nav>
+        <!--placeholder-->
+        <main>
+          <section class="about">
+            <div class="main">
+              <img src="assets/images/local_farmer_1.jpg" alt="main">
+              <div class="about-text">
+                <h1 class="header has-text-weight-bold">About Us</h1>
+                <h5>More than a <span>Recipe App</span></h5>
+                <br>
+                <p>The Supprt Your Local app is where culinary creativity meets community sustainability. We are more than just a recipe app; we're a passionate advocate for local agriculture. <br><br>We believe in the power of ethically sourced ingredients to elevate your homemade dishes. Our mission is simple: to connect you with the bountiful harvest of local farmers while supporting the growth of our vibrant agricultural community. <br><br>You'll not only discover mouthwatering recipes but also have the opportunity to support your local farmers and growers while doing so. We're committed to reducing food miles, promoting sustainable farming practices, and celebrating the incredible flavours that can only be found in the freshest, farm-to-table produce. </p>
+              </div>
+            </div>
+    
+          </section>
+        </main>
+    
+        <footer>
+            <!--attribution for left arrow in nav-->
+    
+        </footer>
     </main>
 
     <footer>
