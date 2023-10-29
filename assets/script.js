@@ -91,6 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoutButton.addEventListener("click", function(event) {
         console.log('reload about to happen');
+
+        //Change storage loggedinState
+        function storeLoggedInState() {
+            var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+            userDataFromStorage.loggedInState = false; 
+            localStorage.setItem('user', JSON.stringify(userDataFromStorage));
+        };   
+        storeLoggedInState();
         location.reload();
     });
 });

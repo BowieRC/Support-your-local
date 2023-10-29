@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         signUpButton.addEventListener("click", function(event) {
             event.preventDefault;
             
-
             var firstNameInput = document.querySelector('input[name="first-name"]');
             var lastNameInput = document.querySelector('input[name="last-name"]');
             var emailInput = document.querySelector('input[name="email"]');
@@ -73,10 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 $(signupModalEl).hide();
                 $("#root-signup-button").addClass("is-hidden");
 
-                var userDataFromStorage = localStorage.getItem("user");
-                console.log(JSON.parse(userDataFromStorage), "userDataFromStorage")
-                var userDataFromStorage = JSON.parse(userDataStored);
-                console.log(userDataFromStorage);
+                var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
                 
                 var logInPrompt1 = $('<h3></h3>');
                 var logInPrompt2 = $('<h3></h3>');
@@ -88,16 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 $(logInPrompt2).css({"line-height": "4rem", "font-size": "1.5rem", "font-style": "oblique"});
 
 
-                logInPrompt1.text("Welcome " + userData.firstName + "!");
+                logInPrompt1.text("Welcome " + userDataFromStorage.firstName + "!");
                 logInPrompt2.text("Please log in to change your food shopping experience.")
                 anchorSubtitle.append(logInPrompt1);
                 anchorSubtitle.append(logInPrompt2);
             }          
         });
-
-        
-    
-
 
     //Access for reading terms and conditions in modal
     $(document).ready(function() {
@@ -105,9 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open("ts&cs.html", "_blank");
         });
     });
-
-
-    
+ 
     var loginButton = document.querySelector("#login-button");
     var loginModal = document.querySelector("#modal-log-in");
 
@@ -131,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             //brings data from storage, changes rememberme value and resets it back 
             function storeRememberMe() {
-                    // var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
-                    userDataFromStorage.rememberMeChoice = rememberMeCheckbox.checked; 
-                    localStorage.setItem('user', JSON.stringify(userDataFromStorage));
-                    // localStorage.setItem(user["rememberMeChoice"], JSON.stringify(rememberMeCheckbox.checked));     
+                // var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+                userDataFromStorage.rememberMeChoice = rememberMeCheckbox.checked; 
+                localStorage.setItem('user', JSON.stringify(userDataFromStorage));
+                // localStorage.setItem(user["rememberMeChoice"], JSON.stringify(rememberMeCheckbox.checked));     
             };
 
             storeRememberMe();
