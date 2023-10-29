@@ -15,12 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
             var passwordInput = document.querySelector('input[name="password"]');
             
             var confirmPassword = document.querySelector('input[name="confirm-password"]')
+            var agreeCheckbox = document.querySelector('#agree-terms');
+            console.log(agreeCheckbox.checked);
 
             var user = {
                 firstName: firstNameInput.value.trim(),
                 lastName: lastNameInput.value.trim(),
                 email: emailInput.value.trim(),
                 password: passwordInput.value.trim(),
+                terms: agreeCheckbox.checked,
             };
             
             var firstName = $(firstNameInput).val();
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var password = $(passwordInput).val();
             var confirm = $(confirmPassword).val();
             
-            var agreeCheckbox = document.querySelector('#agree-terms');
+            
 
             if(!firstName || !lastName || !email || !password || !confirm || !agreeCheckbox.checked) {
             
