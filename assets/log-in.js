@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         $(passwordLoginEl).val()=("");
                         return;
 
-                    } else if (emailLogin !== userData.email || passwordLogin !== userData.email) {
+                    } else if (emailLogin !== userData.email || passwordLogin !== userData.password) {
                         var matchAlertMsg = $('<p></p>');
                         matchAlertMsg.addClass('has-text-success');
                         matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
@@ -157,10 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (checkPasswordMatch()) {
                 $(loginModal).hide();
-                $("#root-login-button").css({"visibility": "hidden"});
-                $("#root-signup-button").css({"visibility": "hidden"});
+                $("#root-login-button").addClass("is-hidden");
+                $("#root-signup-button").addClass("is-hidden");
                 $("#root-logout-button").toggleClass("is-hidden");
-                $("root-logout-button").addClass("js-code-trigger");
+                $("#root-logout-button").addClass("js-code-trigger");
                 $(".navbar-burger").toggleClass("is-active");
                 $(".navbar-menu").toggleClass("is-active");
                 $("#subtitle").remove();
