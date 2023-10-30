@@ -34,8 +34,6 @@ Explore the recipes page, searching with a variety of terms including area and i
 
 Use the search items to find places to buy the food items you need near your location. 
 
-*Add picture of map functionality here*
-
 ## Credits
 
 Team members: 
