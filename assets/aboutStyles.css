@@ -57,14 +57,20 @@
     color: white;
     font-size: 15px;
   }
-
+  
   span {
     color: #23d160;
   }
- 
+  
   main{
-    margin-right: 600px;
+    margin-right: 40%;
     margin-bottom: 70px;
+  }
+ 
+  @media (max-width: 1024px) {
+    .desktop {
+        display: none;
+    }
   }
   @media screen and (max-width: 768px) {
     .about {
