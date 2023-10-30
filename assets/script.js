@@ -1,3 +1,44 @@
+//onload event that checks remember me status and will open logged in to reflect local storage values
+window.onload = (event) => {
+        function checkRememberMe() {
+            //run function after checking that storage is not empty
+            var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+            if (typeof userDataFromStorage === 'undefined' || userDataFromStorage === null) {
+                console.log(typeof userDataFromStorage === 'undefined' || userDataFromStorage === null, "null or undefined so return");
+                return;
+            } else if (userDataFromStorage.rememberMeChoice === false) {
+                console.log(userDataFromStorage.rememberMeChoice === false, "remember me is false")
+                return;
+            } else if (userDataFromStorage.rememberMeChoice === true) {
+                function runLoggedInState() {
+                if(!userDataFromStorage.loggedInState) {
+                        console.log(userDataFromStorage.loggedInState + " userDataFromStorage.loggedInState " + "so running original settings");
+                    return;
+
+                    } else {
+                    $("#root-login-button").addClass("is-hidden");
+                    $("#root-signup-button").addClass("is-hidden");
+                    $("#root-logout-button").toggleClass("is-hidden");
+                    $("#root-logout-button").addClass("js-code-trigger");
+                    $(".navbar-burger").toggleClass("is-active");
+                    $(".navbar-menu").toggleClass("is-active");
+                    $("#subtitle").remove();
+                            
+                    var loggedInUserEl = document.querySelector("#user-placeholder");
+                    loggedInUserEl.textContent = "Logged in: " + userDataFromStorage.firstName;
+                    return;
+                    };
+                };
+                runLoggedInState();
+                return;
+            };
+        };
+
+    checkRememberMe();
+};
+
+//end onload event checking remember me
+
 var homeNavEl = $('#home-nav');
 var aboutNavEl = $('#about-nav');
 var contactNavEl = $('#contact-nav');
@@ -7,7 +48,7 @@ var recipesNavEl = $('#recipes-nav');
 //Event listener on nav items changes url to other page
 aboutNavEl.on('click', function () {
     document.location.assign('./about.html');
-  });
+});
 
 contactNavEl.on('click', function () {
     document.location.assign('./contact.html');
@@ -19,7 +60,7 @@ recipesNavEl.on('click', function () {
 
 //Click event causes reload
 homeNavEl.on('click', function() {
-    location.reload();
+    location.assign('./index.html');
 });
 //end event listener nav items code
 
@@ -91,6 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoutButton.addEventListener("click", function(event) {
         console.log('reload about to happen');
+
+        //Change storage loggedinState
+        function storeLoggedInState() {
+            var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+            userDataFromStorage.loggedInState = false; 
+            localStorage.setItem('user', JSON.stringify(userDataFromStorage));
+        };   
+        storeLoggedInState();
         location.reload();
     });
 });

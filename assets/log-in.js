@@ -8,19 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
         signUpButton.addEventListener("click", function(event) {
             event.preventDefault;
             
-
             var firstNameInput = document.querySelector('input[name="first-name"]');
             var lastNameInput = document.querySelector('input[name="last-name"]');
             var emailInput = document.querySelector('input[name="email"]');
             var passwordInput = document.querySelector('input[name="password"]');
             
             var confirmPassword = document.querySelector('input[name="confirm-password"]')
+            var agreeCheckbox = document.querySelector('#agree-terms');
+            var rememberMeCheckbox = document.querySelector('#remember-me');
 
             var user = {
                 firstName: firstNameInput.value.trim(),
                 lastName: lastNameInput.value.trim(),
                 email: emailInput.value.trim(),
                 password: passwordInput.value.trim(),
+                terms: agreeCheckbox.checked,
+                rememberMeChoice: rememberMeCheckbox.checked,
+                loggedInState: false,
             };
             
             var firstName = $(firstNameInput).val();
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var password = $(passwordInput).val();
             var confirm = $(confirmPassword).val();
             
-            var agreeCheckbox = document.querySelector('#agree-terms');
+            
 
             if(!firstName || !lastName || !email || !password || !confirm || !agreeCheckbox.checked) {
             
@@ -49,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 //empty password fields only
                 $(passwordInput).val('');
                 $(confirmPassword).val('');
-              
-                //disable Signup button
                 return;
+
             } else {
                 localStorage.setItem("user", JSON.stringify(user));
+
                 function clearInputEls() {
 
                     $(firstNameInput).val('');
@@ -66,12 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInputEls();
              
                 $(signupModalEl).hide();
-                $("#root-signup-button").css({"visibility": "hidden"});
+                $("#root-signup-button").addClass("is-hidden");
 
-                var userDataStored = localStorage.getItem("user");
-                console.log(JSON.parse(userDataStored), "userDataStored")
-                var userData = JSON.parse(userDataStored);
-                console.log(userData);
+                var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
                 
                 var logInPrompt1 = $('<h3></h3>');
                 var logInPrompt2 = $('<h3></h3>');
@@ -83,49 +84,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 $(logInPrompt2).css({"line-height": "4rem", "font-size": "1.5rem", "font-style": "oblique"});
 
 
-                logInPrompt1.text("Welcome " + userData.firstName + "!");
+                logInPrompt1.text("Welcome " + userDataFromStorage.firstName + "!");
                 logInPrompt2.text("Please log in to change your food shopping experience.")
                 anchorSubtitle.append(logInPrompt1);
                 anchorSubtitle.append(logInPrompt2);
-            }               
+            }          
         });
-    
-    });
 
-//Access for reading terms and conditions in modal
-$(document).ready(function() {
-    $("#terms-link").click(function() {
-        window.open("ts&cs.html", "_blank");
+    //Access for reading terms and conditions in modal
+    $(document).ready(function() {
+        $("#terms-link").click(function() {
+            window.open("ts&cs.html", "_blank");
+        });
     });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    
+ 
     var loginButton = document.querySelector("#login-button");
     var loginModal = document.querySelector("#modal-log-in");
 
         loginButton.addEventListener("click", function(event) {
             event.preventDefault;
-            console.log("log in");
-
-
+            
             var emailLoginEl = document.querySelector('input[name="email-login"]');
             var passwordLoginEl = document.querySelector('input[name="password-login"]');
 
-            //bring out userData from storage
-            var userDataStored = localStorage.getItem("user");
-            var userData = JSON.parse(userDataStored);
-
-            console.log(userData.email);
-            console.log(userData.password);
+            //bring out userDataFromStorage from storage
+            var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
 
             var emailLogin = $(emailLoginEl).val();
             var passwordLogin = $(passwordLoginEl).val();
             console.log(emailLogin);
             console.log(passwordLogin);
 
-            var rememberMeEl = $("#remember-me");
-           
+            //update rememberme value as per input
+
+            var rememberMeCheckbox = document.querySelector('#remember-me');
+            
+            //brings data from storage, changes rememberme value and resets it back 
+            function storeRememberMe() {
+                // var userDataFromStorage = JSON.parse(localStorage.getItem('user'));
+                userDataFromStorage.rememberMeChoice = rememberMeCheckbox.checked; 
+                localStorage.setItem('user', JSON.stringify(userDataFromStorage));
+                // localStorage.setItem(user["rememberMeChoice"], JSON.stringify(rememberMeCheckbox.checked));     
+            };
+
+            storeRememberMe();
+
+            //end update  rememberme value as per input
+
+
             function checkPasswordMatch() {
                     if (!emailLogin || !passwordLogin) {
                         var loginCheckInputMsg = $('<p></p>');
@@ -137,39 +143,48 @@ document.addEventListener('DOMContentLoaded', () => {
                         $(passwordLoginEl).val()=("");
                         return;
 
-                    } else if (emailLogin === !userData.email || passwordLogin === !userData.email) {
+                    } else if (emailLogin !== userDataFromStorage.email || passwordLogin !== userDataFromStorage.password) {
                         var matchAlertMsg = $('<p></p>');
                         matchAlertMsg.addClass('has-text-success');
                         matchAlertMsg.text("Details don't match your sign-up details. Please try again.");
                         rememberMeEl.append(matchAlertMsg);
+                        console.log("details don't match stoarge");
                         //clear fields
-                        $(emailLoginEl).val()=('');
-                        $(passwordLoginEl).val()=('');
+                        $(emailLoginEl).val('');
+                        $(passwordLoginEl).val('');
                         return;
 
-                    } else if (emailLogin === userData.email && passwordLogin === userData.password) {
+                    } else if (emailLogin === userDataFromStorage.email && passwordLogin === userDataFromStorage.password) {
                         console.log('logged in');
                         return true;
-                        
                     };          
+            };
+
+            function runLoggedInState() {
+                if(!userDataFromStorage.loggedInState) {
+                    console.log(userDataFromStorage.loggedInState + "userDataFromStorage.loggedInState" + "run original settings");
+                    return;
+                    } else {
+                        $("#root-login-button").addClass("is-hidden");
+                        $("#root-signup-button").addClass("is-hidden");
+                         $("#root-logout-button").toggleClass("is-hidden");
+                        $("#root-logout-button").addClass("js-code-trigger");
+                        $(".navbar-burger").toggleClass("is-active");
+                        $(".navbar-menu").toggleClass("is-active");
+                        $("#subtitle").remove();
+                       
+                    var loggedInUserEl = document.querySelector("#user-placeholder");       
+                    loggedInUserEl.textContent = "Logged in: " + userDataFromStorage.firstName;
+                    return;
+                };
             };
 
             if (checkPasswordMatch()) {
                 $(loginModal).hide();
-                $("#root-login-button").css({"visibility": "hidden"});
-                $("#root-signup-button").css({"visibility": "hidden"});
-                $("#root-logout-button").toggleClass("is-hidden");
-                $("root-logout-button").addClass("js-code-trigger");
-                $(".navbar-burger").toggleClass("is-active");
-                $(".navbar-menu").toggleClass("is-active");
-                $("#subtitle").remove();
-    
-                var loggedInUserEl = document.querySelector("#user-placeholder");       
-    
-                loggedInUserEl.textContent = "Logged in: " + userData.firstName;
-            }  
-        }); 
-});
+                userDataFromStorage.loggedInState = true;
+                localStorage.setItem('user', JSON.stringify(userDataFromStorage)); 
 
-
-
+                runLoggedInState();               
+            };
+        });
+}); 

@@ -3,34 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>
+      Contact Us
+    </title>
     <link rel="stylesheet" href="./assets/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
       <!-- jQuery tag added here as it didn't work at the end of the body-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Support You Local</h1>
-        <h2>Local grocers straight to you</h2>
 
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <!--navbar-adjusted is a container created outside of Bulma to be unresponsive as needed-->
-            <div class="navbar-fixed-full-width">
-            
-              <a class="navbar-item">
- 
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-              </a>
+      <!DOCTYPE html>
+      <html lang="en">
+      
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="./assets/styles.css">
+          <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+          <link rel="stylesheet" href="./assets/helpers.css">
+          <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCtBPYMqlBJKHDOSjwGdjw7BcKgB1BQWlA">
+          <title>Support Your Local</title>
+          <!-- jQuery tag added here as it didn't work at the end of the body-->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        </head>
+      
+        <body has-navbar-fixed-top>
+          <header>
+            <!--navbar-->
+            <nav class="navbar is-fixed-top transparent-background">
+              <div class="navbar-brand">
+                  <a class="navbar-item has-text-black height-override" id="logo-nav">
+                    <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
+                  </a>
+                  <div class="navbar-item has-text-centered height-adjust">
+                    <h1 class="title is-4 has-text-weight-bold has-text-white ">Support Your <span class="has-text-success">Local</span></h1>
+                  </div>
+                  <!--navbar-burger must be last child-->
+                  <!--navbar-burger appears for touch screen only-->
+                  <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+              </div>
+              <!--change background of menu to transparent in nav-burger-->
+              <div id="navbar-items-menu" class="navbar-menu transparent-background">
+                <div class="navbar-start">
+                   <a class="navbar-item has-text-white" id="home-nav">Home</a>
+                   <a class="navbar-item has-text-white" id="recipes-nav">Recipes</a>        
+          
+                   <a class="navbar-item has-text-white" id="about-nav">About us</a>  
+                   <a class="navbar-item has-text-white" id="contact-nav">Contact us</a> 
+                </div>
+      
+                <div class="navbar-end">
+                  <!--place holder for username to appear when logged in-->
+                  <div class="navbar-item has-text-success" id="user-placeholder"></div>                  
+                  <div class="buttons button-margins">
+                    <a id="root-logout-button" class="button js-code-trigger is-black has-text-white is-hidden" data-target="modal-log-out">
+                      <strong>Log out</strong>
+                    </a>
+                </div>
+                </div>
+              </div>    
+            </nav>
+                 
+            <!-- Hero holds title -->
+            <section class="hero heading has-text-weight-bold is-size-7">
+              <div class="hero-body">
 
+              </div>
+            </section>   
+              <!--logout modal code-->
+            <div id="modal-log-out" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Log out</p>
+                  <button class="delete" aria-label="close"></button>
+                </header>
+                <section id="logout-body" class="modal-card-body">
+                  <div>Thanks for using our app!</div>
+                  <div>We hope you keep enjoying your food shopping!</div>
+                </section>
+                <footer class="modal-class-foot">
+                  <button id="see-ya-button" class="button is-success">See-ya next time!</button>
+                  <button class="button modal-cancel">Cancel</button>
+                </footer>
             </div>
-
-        </nav>
-
+      <!--end of logout modal code-->             
     </header>
+    <section class="section">
+      <h1 class="title mb-6">'Support Your Local' Contact Us</h1>
+      <h2 class="subtitle">
+        Developer Git Hub pages
+      </h2>
+      <ul>
+        <li>Benji <a href='https://github.com/BenjiCullen' target="_blank">https://github.com/BenjiCullen</a></li>
+        <li>Andrea <a href='https://github.com/mopadeen ' target="_blank">https://github.com/mopadeen </a></li>
+        <li>Bowie <a href='https://github.com/BowieRC ' target="_blank">https://github.com/BowieRC </a></li>
+        <li>Amy <a href='https://github.com/AmyLloyd ' target="_blank">https://github.com/AmyLloyd </a></li>
+      </ul>
+        <br>
+      <h2 class="subtitle">
+        Get Involved
+      </h2>
+      <h4 class="mt-3 is-italic">We welcome your input and feedback so that together we can make Support Your Local a driver of positive local experiences.</h2>
+    </section>
 
-    <main>
-    </main>
     <script src="./assets/script.js"></script>
+    
 </body>
+
 </html>

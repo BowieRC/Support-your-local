@@ -24,8 +24,6 @@
                 <a class="navbar-item has-text-black height-override" id="logo-nav">
                   <img src="./assets/images/LOGO-04.png" style="width:6.25rem;height:5rem;" class="height-override" >
                 </a>
-                <!--place holder for username to appear when logged in-->
-                <div class="navbar-item has-text-success" id="user-placeholder"></div>
                 <!--navbar-burger must be last child-->
                 <!--navbar-burger appears for touch screen only-->
                 <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="navbar-items-menu">
@@ -45,7 +43,8 @@
               </div>
     
               <div class="navbar-end">
-              
+                    <!--place holder for username to appear when logged in-->
+                    <div class="navbar-item has-text-success" id="user-placeholder"></div>                    
                     <div class="buttons button-margins">
                         <a id="root-signup-button" class="button  is-black js-code-trigger has-text-white" data-target="modal-sign-up">
                           <strong>Sign up</strong>
@@ -111,13 +110,13 @@
               <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                  <input class="input is-success" name="password" type="text" placeholder="type a password" value="">
+                  <input class="input is-success" name="password" type="password" placeholder="type a password" value="">
                 </div>
               </div>
               <div class="field">
                 <label id="confirm-password-label" class="label">Confirm Password</label>
                 <div class="control">
-                  <input class="input is-success" name="confirm-password" type="text" placeholder="retype password" value="">
+                  <input class="input is-success" name="confirm-password" type="password" placeholder="retype password" value="">
                 </div>
               </div>
               <div class="field">
@@ -159,14 +158,14 @@
               <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                  <input class="input is-success" name="password-login" type="text" placeholder="type password max. 8 characters" value="">
+                  <input class="input is-success" name="password-login" type="password" placeholder="type password" value="">
                 </div>
               </div>
               <!--Remember me will link to localStorage later-->
               <div class="field">
                 <div class="control">
-                  <label class="checkbox" id="remember-me">
-                    <input  type="checkbox">
+                  <label class="checkbox">
+                    <input type="checkbox" id="remember-me">
                     Remember me
                   </label>
                         
@@ -234,30 +233,7 @@
       <hero class="#">  
         
       </hero>
-      <!--Right side of web page-->
-        <aside>
-          <h2>About us</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing </p>
-        </aside>
-
-       <aside>
-        <!--Left side of web page-->
-        <h2>Recipes</h2>
-        <img src="#" alt="#" width="#" height="#"> 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum minus sint, iure repellendus sapiente mollitia. Corporis exercitationem ad consequatur dolores, quasi molestias provident quas? Pariatur quaerat excepturi qui quia ullam!</p>
-       </aside>
-        <div>
-          <section>
-            <!--This is where the searched content will be displayed-->
-            <img src="#" alt="#" width="#" height="#">  
-            <h2>Grocery list</h2> 
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>  
-          </section>
-
-        </div>
+      </div>
       </div>
 
     </main>
