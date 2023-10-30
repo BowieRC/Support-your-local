@@ -267,6 +267,7 @@ function styling(cData) {
 
   topContainerEl.attr("class", "container columns is-flex flex-direction-column is-flex-wrap-wrap is-justify-content-space-evenly mt-4");
   topCardContainerEl.attr("class","card column is-one-third-desktop is-two-fifths-tablet is-full-tablet m-6-mobile m-2 mt-0");
+  topCardContainerEl.attr("style","height: 90%");
   imgContainerEl.attr("class","card-image");
   imgFigureEl.attr("class","image is-3by3");
   imageEl.attr("src", cData.strMealThumb);
@@ -276,7 +277,7 @@ function styling(cData) {
   mediaEl.attr("title is-4");
   mediaEl.text(cData.strMeal);
   selectMealBtnEl.text("View Recipe");
-  selectMealBtnEl.attr("class", "button is-link");
+  selectMealBtnEl.attr("class", "button is-success has-text-black");
   selectMealBtnEl.attr("id", cData.idMeal );
 
 
