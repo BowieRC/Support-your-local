@@ -31,11 +31,13 @@
   
   .main {
     width: 1130px;
-    max-width: 95%;
+    max-width: 100%;
+    height: 750px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding-left: 30px;
   }
   
   .about-text h1 {
@@ -59,7 +61,11 @@
   span {
     color: #23d160;
   }
-
+ 
+  main{
+    margin-right: 600px;
+    margin-bottom: 70px;
+  }
   @media screen and (max-width: 768px) {
     .about {
       flex-direction: column;
